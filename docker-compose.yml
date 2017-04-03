@@ -2,7 +2,7 @@ version: '3'
 
 services:
   app:
-    image: weseek/crowi-plus:1.0.0-RC6
+    dockerfile: ./Dockerfile
     links:
       - mongo:mogo
       - redis:redis
@@ -14,7 +14,7 @@ services:
     environment:
       - MONGO_URI=mongodb://mongo:27017/crowi
       - REDIS_URL=redis://redis:6379/crowi
-      - ELASTICSEARCH_URI=-http://elasticsearch:9200/crowi
+      - ELASTICSEARCH_URI=http://elasticsearch:9200/crowi
     entrypoint:
       - dockerize
       - -wait
