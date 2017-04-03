@@ -14,7 +14,6 @@ services:
       - mongo
       - redis
       - elasticsearch
-    # set environment
     environment:
       - MONGO_URI=mongodb://mongo:27017/crowi
       - REDIS_URL=redis://redis:6379/crowi
@@ -38,28 +37,21 @@ services:
       - mongo_db:/data/db
     volumes:
       - redis_data:/data
-    # ports:
-    #   - xxxxx:27017
 
   redis:
     image: redis:3-alpine
-    # ports:
-    #   - xxxx:6379
 
   elasticsearch:
     image: elasticsearch:2
     entrypoint:
-      - "bash"
-      - "-c"
-      - ">-"
+      - bash
+      - -c
       - "./bin/plugin install analysis-kuromoji;
          ./bin/plugin install mobz/elasticsearch-head;
          exec $$@"
     command: elasticsearch
     volumes:
       - es_data:/usr/share/elasticsearch/data
-    # ports:
-    #   - xxxx:9300
 
 volumes:
   crowi_data:

@@ -18,4 +18,4 @@ RUN echo "install plugins" \
 #      crowi-plugin-pukiwiki-like-linker \
   && echo "done."
 
-CMD npm run build:prod:docker
+CMD npm run build:prod:container
