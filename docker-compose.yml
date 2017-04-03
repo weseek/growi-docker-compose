@@ -1,0 +1,55 @@
+version: '3'
+
+services:
+  app:
+    image: weseek/crowi-plus:1.0.0-RC6
+    links:
+      - mongo:mogo
+      - redis:redis
+      - elasticsearch:elasticsearch
+    depends_on:
+      - mongo
+      - redis
+      - elasticsearch
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/crowi
+      - REDIS_URL=redis://redis:6379/crowi
+      - ELASTICSEARCH_URI=-http://elasticsearch:9200/crowi
+    entrypoint:
+      - dockerize
+      - -wait
+      - tcp://mongo:27017
+      - exec $$@
+    volumes:
+      - crowi_data:/data
+
+  mongo:
+    image: mongo:3
+    volumes:
+      - mongo_configdb:/data/configdb
+      - mongo_db:/data/db
+    volumes:
+      - redis_data:/data
+
+  redis:
+    image: redis:3-alpine
+
+  elasticsearch:
+    image: elasticsearch:2
+    entrypoint:
+      - "bash"
+      - "-c"
+      - ">-"
+      - "./bin/plugin install analysis-kuromoji;
+         ./bin/plugin install mobz/elasticsearch-head;
+         exec $$@"
+    command: elasticsearch
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
+
+volumes:
+  crowi_data:
+  mongo_configdb:
+  mongo_db:
+  redis_data:
+  es_data:
