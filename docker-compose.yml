@@ -18,13 +18,9 @@ services:
       - MONGO_URI=mongodb://mongo:27017/crowi
       - REDIS_URL=redis://redis:6379/crowi
       - ELASTICSEARCH_URI=http://elasticsearch:9200/crowi
-    entrypoint:
-      - dockerize
-      - -wait
-      - tcp://mongo:27017
-      - -timeout
-      - 30s
-      - exec $$@
+    command: "dockerize
+              -wait tcp://mongo:27017 -timeout 30s
+              npm run server:prod:container"
     volumes:
       - crowi_data:/data
     # ports:
