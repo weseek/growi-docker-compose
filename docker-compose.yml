@@ -2,7 +2,10 @@ version: '3'
 
 services:
   app:
-    dockerfile: ./Dockerfile
+    build:
+      context: .
+      # image: my/crowi-plus  # you can comment out if using docker-compose v1.6.0 or above
+      dockerfile: ./Dockerfile
     links:
       - mongo:mogo
       - redis:redis
@@ -11,6 +14,7 @@ services:
       - mongo
       - redis
       - elasticsearch
+    # set environment
     environment:
       - MONGO_URI=mongodb://mongo:27017/crowi
       - REDIS_URL=redis://redis:6379/crowi
@@ -19,9 +23,13 @@ services:
       - dockerize
       - -wait
       - tcp://mongo:27017
+      - -timeout
+      - 30s
       - exec $$@
     volumes:
       - crowi_data:/data
+    # ports:
+    #   - xxxx:3000
 
   mongo:
     image: mongo:3
@@ -30,9 +38,13 @@ services:
       - mongo_db:/data/db
     volumes:
       - redis_data:/data
+    # ports:
+    #   - xxxxx:27017
 
   redis:
     image: redis:3-alpine
+    # ports:
+    #   - xxxx:6379
 
   elasticsearch:
     image: elasticsearch:2
@@ -46,6 +58,8 @@ services:
     command: elasticsearch
     volumes:
       - es_data:/usr/share/elasticsearch/data
+    # ports:
+    #   - xxxx:9300
 
 volumes:
   crowi_data:
