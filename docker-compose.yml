@@ -31,7 +31,7 @@ services:
     #   - xxxx:3000
 
   mongo:
-    image: mongo:3
+    image: mongo:3.4
     volumes:
       - mongo_configdb:/data/configdb
       - mongo_db:/data/db
