@@ -1,4 +1,4 @@
-FROM weseek/crowi-plus:1.0.0-RC6
+FROM weseek/crowi-plus:1.0.0-RC7
 
 ENV APP_DIR /opt/crowi-plus
 
@@ -17,5 +17,5 @@ RUN echo "install plugins" \
 #      crowi-plugin-lsx \
 #      crowi-plugin-pukiwiki-like-linker \
   && echo "done."
-
-CMD npm run build:prod:container
+# you must rebuild if install plugin at least one
+# RUN npm build:prod
