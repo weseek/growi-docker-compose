@@ -14,8 +14,27 @@ docker-compose up
 
 and access to http://localhost:3000
 
-DISABLED Environment Variables
--------------------------------
+
+How to install plugins
+-----------------------
+
+edit `Dockerfile` and activate commented out lines.
+
+### Example
+
+```dockerfile
+# install plugins if necessary
+RUN echo "install plugins" \
+  && npm install --save \
+     crowi-plugin-lsx \
+     crowi-plugin-pukiwiki-like-linker \
+  && echo "done."
+# you must rebuild if install plugin at least one
+RUN npm build:prod
+```
+
+NOTE: DISABLED Environment Variables
+-------------------------------------
 
 Following is **disabled** because `docker-compose.yml` overwrites them.
 
