@@ -6,6 +6,8 @@ services:
       context: .
       # image: my/crowi-plus  # you can comment out if using docker-compose v1.6.0 or above
       dockerfile: ./Dockerfile
+    ports:
+      - 127.0.0.1:3000:3000
     links:
       - mongo:mogo
       - redis:redis
@@ -20,11 +22,11 @@ services:
       - ELASTICSEARCH_URI=http://elasticsearch:9200/crowi
     command: "dockerize
               -wait tcp://mongo:27017 -timeout 30s
+              -wait tcp://redis:6379 -timeout 30s
+              -wait tcp://elasticsearch:9200 -timeout 30s
               npm run server:prod:container"
     volumes:
       - crowi_data:/data
-    # ports:
-    #   - xxxx:3000
 
   mongo:
     image: mongo:3.4
@@ -39,13 +41,12 @@ services:
 
   elasticsearch:
     image: elasticsearch:2
-    entrypoint:
-      - bash
+    user: elasticsearch
+    command:
+      - sh
       - -c
       - "./bin/plugin install analysis-kuromoji;
-         ./bin/plugin install mobz/elasticsearch-head;
-         exec $$@"
-    command: elasticsearch
+         elasticsearch"
     volumes:
       - es_data:/usr/share/elasticsearch/data
 
