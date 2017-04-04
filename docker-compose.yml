@@ -20,6 +20,7 @@ services:
       - MONGO_URI=mongodb://mongo:27017/crowi
       - REDIS_URL=redis://redis:6379/crowi
       - ELASTICSEARCH_URI=http://elasticsearch:9200/crowi
+      - PASSWORD_SEED=changeme
     command: "dockerize
               -wait tcp://mongo:27017 -timeout 30s
               -wait tcp://redis:6379 -timeout 30s
