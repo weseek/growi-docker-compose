@@ -22,4 +22,4 @@ RUN echo "install plugins" \
 #      crowi-plugin-pukiwiki-like-linker \
   && echo "done."
 # you must rebuild if install plugin at least one
-# RUN npm build:prod
+# RUN npm run build:prod
