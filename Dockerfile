@@ -1,4 +1,4 @@
-FROM weseek/crowi-plus:1.0.0-RC8
+FROM weseek/crowi-plus:1.0.0-RC9
 
 ENV APP_DIR /opt/crowi-plus
 
@@ -10,6 +10,10 @@ RUN apk add --no-cache --virtual .dl-deps curl \
     && apk del .dl-deps
 
 WORKDIR ${APP_DIR}
+
+# Corresponds to `FILE_UPLOAD=local`
+RUN mkdir -p /data/uploads \
+    && ln -s /data/uploads $APP_DIR/public/uploads
 
 # install plugins if necessary
 RUN echo "install plugins" \
