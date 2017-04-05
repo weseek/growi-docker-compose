@@ -47,3 +47,23 @@ Change `docker-compose.yml` if you need.
 
 Others conform to the official.
 See https://github.com/crowi/crowi
+
+
+Documents
+----------
+
+* [crowi-plus wiki](https://github.com/weseek/crowi-plus/wiki)
+  * [Question and Answers](https://github.com/weseek/crowi-plus/wiki/Question-and-Answers)
+  
+  
+Issues
+------
+
+If you have any problems with or questions about this image, please contact us through a [GitHub issue](https://github.com/weseek/crowi-plus-docker-compose/issues).
+
+
+License
+---------
+
+* The MIT License (MIT)
+* See LICENSE file.
