@@ -49,8 +49,8 @@ Others conform to the official.
 See https://github.com/crowi/crowi
 
 
-Documents
-----------
+Documentation
+--------------
 
 * [crowi-plus wiki](https://github.com/weseek/crowi-plus/wiki)
   * [Question and Answers](https://github.com/weseek/crowi-plus/wiki/Question-and-Answers)
