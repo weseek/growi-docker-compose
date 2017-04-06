@@ -6,7 +6,7 @@ Quick start crowi-plus with docker-compose
 Usage
 -----
 
-```
+```bash
 git clone https://github.com/weseek/crowi-plus-docker-compose.git crowi-plus
 cd crowi-plus
 docker-compose up
@@ -14,6 +14,25 @@ docker-compose up
 
 and access to http://localhost:3000
 
+
+Upgrade
+-------
+
+```bash
+cd crowi-plus
+git pull
+
+# stop
+docker-compose stop
+
+# rebuild app container image
+docker rm crowiplus_app_1
+docker rmi crowiplus_app
+docker-compose build
+
+# start
+docker-compose up
+```
 
 How to install plugins
 -----------------------
