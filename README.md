@@ -3,8 +3,8 @@ crowi-plus-docker-compose
 
 Quick start crowi-plus with docker-compose
 
-Usage
------
+Install and Start
+------------------
 
 ```bash
 git clone https://github.com/weseek/crowi-plus-docker-compose.git crowi-plus
@@ -19,13 +19,14 @@ Upgrade
 -------
 
 ```bash
+# go to crowi-plus-docker-compose workdir
 cd crowi-plus
-git pull
 
 # stop
 docker-compose stop
 
 # rebuild app container image
+git pull
 docker rm crowiplus_app_1
 docker rmi crowiplus_app
 docker-compose build
