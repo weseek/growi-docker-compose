@@ -22,9 +22,10 @@ services:
       - ELASTICSEARCH_URI=http://elasticsearch:9200/crowi
       - PASSWORD_SEED=changeme
     command: "dockerize
-              -wait tcp://mongo:27017 -timeout 30s
-              -wait tcp://redis:6379 -timeout 30s
-              -wait tcp://elasticsearch:9200 -timeout 30s
+              -wait tcp://mongo:27017
+              -wait tcp://redis:6379
+              -wait tcp://elasticsearch:9200
+              -timeout 60s
               npm run server:prod:container"
     volumes:
       - crowi_data:/data
@@ -41,13 +42,13 @@ services:
     image: redis:3-alpine
 
   elasticsearch:
-    image: elasticsearch:2
+    image: elasticsearch:5.3
     user: elasticsearch
     command:
       - sh
       - -c
-      - "./bin/plugin install analysis-kuromoji;
-         elasticsearch"
+      - "./bin/elasticsearch-plugin list | grep -q analysis-kuromoji || ./bin/elasticsearch-plugin install analysis-kuromoji;
+        /docker-entrypoint.sh elasticsearch"
     volumes:
       - es_data:/usr/share/elasticsearch/data
 
