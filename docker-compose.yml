@@ -43,7 +43,6 @@ services:
 
   elasticsearch:
     image: elasticsearch:5.3
-    user: elasticsearch
     command:
       - sh
       - -c
