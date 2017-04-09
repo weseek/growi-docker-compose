@@ -72,7 +72,7 @@ See https://github.com/crowi/crowi
 Documentation
 --------------
 
-* [github wiki pages](https://github.com/weseek/crowi-plus/wiki)
+* [crowi-plus wiki](https://github.com/weseek/crowi-plus/wiki)
   * [Questions and Answers](https://github.com/weseek/crowi-plus/wiki/Questions-and-Answers)
   
   
