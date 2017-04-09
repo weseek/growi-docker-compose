@@ -72,8 +72,8 @@ See https://github.com/crowi/crowi
 Documentation
 --------------
 
-* [crowi-plus wiki](https://github.com/weseek/crowi-plus/wiki)
-  * [Question and Answers](https://github.com/weseek/crowi-plus/wiki/Question-and-Answers)
+* [github wiki pages](https://github.com/weseek/crowi-plus/wiki)
+  * [Questions and Answers](https://github.com/weseek/crowi-plus/wiki/Questions-and-Answers)
   
   
 Issues
