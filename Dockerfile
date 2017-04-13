@@ -1,4 +1,4 @@
-FROM weseek/crowi-plus:1.0.2
+FROM weseek/crowi-plus:1.0.3
 
 ENV APP_DIR /opt/crowi-plus
 
