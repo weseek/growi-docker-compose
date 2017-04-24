@@ -50,6 +50,7 @@ services:
         /docker-entrypoint.sh elasticsearch"
     volumes:
       - es_data:/usr/share/elasticsearch/data
+      - ./esconfig:/usr/share/elasticsearch/config
 
 volumes:
   crowi_data:
