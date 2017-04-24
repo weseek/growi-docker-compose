@@ -4,8 +4,8 @@ services:
   app:
     build:
       context: .
-      # image: my/crowi-plus  # you can comment out to specify name if using docker-compose v1.6.0 or above
       dockerfile: ./Dockerfile
+    # image: my/crowi-plus  # you can comment out to specify name if using docker-compose v1.6.0 or above
     ports:
       - 127.0.0.1:3000:3000
     links:
