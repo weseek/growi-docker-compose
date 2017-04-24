@@ -42,7 +42,7 @@ services:
     image: redis:3-alpine
 
   elasticsearch:
-    image: elasticsearch:5.3
+    image: elasticsearch:5.3-alpine
     command:
       - sh
       - -c
