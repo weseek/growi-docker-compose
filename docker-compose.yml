@@ -47,6 +47,7 @@ services:
       - sh
       - -c
       - "./bin/elasticsearch-plugin list | grep -q analysis-kuromoji || ./bin/elasticsearch-plugin install analysis-kuromoji;
+        ./bin/elasticsearch-plugin list | grep -q analysis-icu || ./bin/elasticsearch-plugin install analysis-icu;
         /docker-entrypoint.sh elasticsearch"
     volumes:
       - es_data:/usr/share/elasticsearch/data
