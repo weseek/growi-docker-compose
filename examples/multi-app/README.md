@@ -1,4 +1,4 @@
-crowi-plus-docker-compose Multiple Site Example
+crowi-plus-docker-compose Multiple Sites Example
 ================================================
 
 This example enables the execution of three crowi-plus sites.
