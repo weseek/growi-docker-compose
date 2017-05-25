@@ -1,6 +1,8 @@
 crowi-plus-docker-compose Multiple Site Example
 ================================================
 
+This example enables the execution of three crowi-plus sites.
+
 Install and Start
 ------------------
 
