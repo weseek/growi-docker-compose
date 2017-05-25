@@ -69,6 +69,12 @@ Others conform to the official.
 See https://github.com/crowi/crowi
 
 
+Multiple sites
+--------------
+
+see https://github.com/weseek/crowi-plus-docker-compose/tree/master/examples/multi-app
+
+
 Documentation
 --------------
 
