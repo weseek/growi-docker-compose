@@ -1,7 +1,7 @@
 crowi-plus-docker-compose
 =========================
 
-Quick start crowi-plus with docker-compose
+Quick start [crowi-plus](https://github.com/weseek/crowi-plus) with docker-compose
 
 Install and Start
 ------------------
