@@ -1,7 +1,7 @@
-crowi-plus-docker-compose with HTTPS server powered by Nginx, Let's Encrypt Example
-====================================================================================
+crowi-plus-docker-compose with HTTPS proxy Example
+===================================================
 
-This example enables the execution of crowi-plus with nginx server that configured to using Let's Encrypt.
+This example enables the execution of crowi-plus with nginx proxy server that configured to using Let's Encrypt.
 
 Install and Start
 ------------------
