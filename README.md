@@ -69,10 +69,11 @@ Others conform to the official.
 See https://github.com/crowi/crowi
 
 
-Multiple sites
---------------
+More convenient Examples
+-------------------------
 
-See [the example](https://github.com/weseek/crowi-plus-docker-compose/tree/master/examples/multi-app).
+* [Multiple sites](https://github.com/weseek/crowi-plus-docker-compose/tree/master/examples/multi-app)
+* [HTTPS(with Let's Encrypt) proxy integration](https://github.com/weseek/crowi-plus-docker-compose/tree/master/examples/https-portal)
 
 
 Documentation
