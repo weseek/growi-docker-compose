@@ -51,7 +51,7 @@ services:
               -timeout 60s
               npm run server:prod:container"
     volumes:
-      - crowi_data_3:/data
+      - crowi_data_2:/data
 
   app-3:
     image: "crowiplusmulti_app:latest"
