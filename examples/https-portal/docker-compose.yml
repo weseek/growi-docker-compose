@@ -52,11 +52,11 @@ services:
     volumes:
       - mongo_configdb:/data/configdb
       - mongo_db:/data/db
-    volumes:
-      - redis_data:/data
 
   redis:
     image: redis:3-alpine
+    volumes:
+      - redis_data:/data
 
   elasticsearch:
     image: elasticsearch:5.3-alpine
