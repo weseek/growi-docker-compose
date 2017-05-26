@@ -1,0 +1,79 @@
+version: '3'
+
+services:
+  # a fully automated HTTPS server powered by Nginx, Let's Encrypt
+  # see https://github.com/SteveLTN/https-portal
+  https-portal:
+    image: steveltn/https-portal:1
+    ports:
+      - '80:80'
+      - '443:443'
+    links:
+      - app:app
+    environment:
+      DOMAINS: 'example.com -> http://app:3000'
+      STAGE: 'production'
+      FORCE_RENEW: 'true'
+      WEBSOCKET: 'true'
+    volumes:
+      - https-portal_data:/var/lib/https-portal
+
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    # image: my/crowi-plus  # you can comment out to specify name if using docker-compose v1.6.0 or above
+    ports:
+      - 127.0.0.1:3000:3000
+    links:
+      - mongo:mogo
+      - redis:redis
+      - elasticsearch:elasticsearch
+    depends_on:
+      - mongo
+      - redis
+      - elasticsearch
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/crowi
+      - REDIS_URL=redis://redis:6379/crowi
+      - ELASTICSEARCH_URI=http://elasticsearch:9200/crowi
+      - PASSWORD_SEED=changeme
+    command: "dockerize
+              -wait tcp://mongo:27017
+              -wait tcp://redis:6379
+              -wait tcp://elasticsearch:9200
+              -timeout 60s
+              npm run server:prod:container"
+    volumes:
+      - crowi_data:/data
+
+  mongo:
+    image: mongo:3.4
+    volumes:
+      - mongo_configdb:/data/configdb
+      - mongo_db:/data/db
+    volumes:
+      - redis_data:/data
+
+  redis:
+    image: redis:3-alpine
+
+  elasticsearch:
+    image: elasticsearch:5.3-alpine
+    command:
+      - sh
+      - -c
+      - "./bin/elasticsearch-plugin list | grep -q analysis-kuromoji || ./bin/elasticsearch-plugin install analysis-kuromoji;
+        ./bin/elasticsearch-plugin list | grep -q analysis-icu || ./bin/elasticsearch-plugin install analysis-icu;
+        /docker-entrypoint.sh elasticsearch"
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
+      - ./esconfig:/usr/share/elasticsearch/config
+
+volumes:
+  https-portal_data:
+  crowi_data:
+  mongo_configdb:
+  mongo_db:
+  redis_data:
+  es_data:
