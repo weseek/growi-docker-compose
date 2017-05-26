@@ -1,38 +1,12 @@
 version: '3'
 
 services:
-  # a fully automated HTTPS server powered by Nginx, Let's Encrypt
-  # see https://github.com/SteveLTN/https-portal
-  https-portal:
-    image: steveltn/https-portal:1
-    ports:
-      - '80:80'
-      - '443:443'
-    links:
-      - app:app
-    environment:
-      DOMAINS: 'example.com -> http://app:3000'
-      STAGE: 'production'
-      FORCE_RENEW: 'true'
-      WEBSOCKET: 'true'
-    volumes:
-      - https_portal_data:/var/lib/https-portal
-
   app:
     build:
       context: .
       dockerfile: ./Dockerfile
-    # image: my/crowi-plus  # you can comment out to specify name if using docker-compose v1.6.0 or above
     ports:
       - 127.0.0.1:3000:3000
-    links:
-      - mongo:mogo
-      - redis:redis
-      - elasticsearch:elasticsearch
-    depends_on:
-      - mongo
-      - redis
-      - elasticsearch
     environment:
       - MONGO_URI=mongodb://mongo:27017/crowi
       - REDIS_URL=redis://redis:6379/crowi
@@ -69,11 +43,3 @@ services:
     volumes:
       - es_data:/usr/share/elasticsearch/data
       - ./esconfig:/usr/share/elasticsearch/config
-
-volumes:
-  https_portal_data:
-  crowi_data:
-  mongo_configdb:
-  mongo_db:
-  redis_data:
-  es_data:
