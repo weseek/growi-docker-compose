@@ -1,47 +1,25 @@
 version: '3'
 
 services:
-  app:
-    build:
-      context: .
-      dockerfile: ./Dockerfile
-    ports:
-      - 127.0.0.1:3000:3000
-    links:
-      - mongo:mogo
-      - redis:redis
-      - elasticsearch:elasticsearch
-    depends_on:
-      - mongo
-      - redis
-      - elasticsearch
-    environment:
-      - MONGO_URI=mongodb://mongo:27017/crowi
-      - REDIS_URL=redis://redis:6379/crowi
-      - ELASTICSEARCH_URI=http://elasticsearch:9200/crowi
-      - PASSWORD_SEED=changeme
-    command: "dockerize
-              -wait tcp://mongo:27017
-              -wait tcp://redis:6379
-              -wait tcp://elasticsearch:9200
-              -timeout 60s
-              npm run server:prod:container"
-    volumes:
-      - crowi_data:/data
-
   mongo:
     image: mongo:3.4
+    ports:
+      - 27017:27017
     volumes:
       - mongo_configdb:/data/configdb
       - mongo_db:/data/db
 
   redis:
     image: redis:3-alpine
+    ports:
+      - 6379:6379
     volumes:
       - redis_data:/data
 
   elasticsearch:
     image: elasticsearch:5.3-alpine
+    ports:
+      - 9200:9200
     command:
       - sh
       - -c
@@ -52,8 +30,12 @@ services:
       - es_data:/usr/share/elasticsearch/data
       - ./esconfig:/usr/share/elasticsearch/config
 
+  elasticsearch-head:
+    image: mobz/elasticsearch-head:5-alpine
+    ports:
+      - 9100:9100
+
 volumes:
-  crowi_data:
   mongo_configdb:
   mongo_db:
   redis_data:
