@@ -53,6 +53,18 @@ services:
       - es_data:/usr/share/elasticsearch/data
       - ./esconfig:/usr/share/elasticsearch/config
 
+  http-portal:
+    image: steveltn/https-portal:1
+    ports:
+      - '80:80'
+      - '443:443'
+    links:
+      - app:app
+    environment:
+      DOMAINS: 'test.crowi-plus.org -> http://app:3000'
+      STAGE: 'production'
+      FORCE_RENEW: 'true'
+
 volumes:
   crowi_data:
   mongo_configdb:
