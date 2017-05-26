@@ -16,7 +16,7 @@ services:
       FORCE_RENEW: 'true'
       WEBSOCKET: 'true'
     volumes:
-      - https-portal_data:/var/lib/https-portal
+      - https_portal_data:/var/lib/https-portal
 
   app:
     build:
@@ -71,7 +71,7 @@ services:
       - ./esconfig:/usr/share/elasticsearch/config
 
 volumes:
-  https-portal_data:
+  https_portal_data:
   crowi_data:
   mongo_configdb:
   mongo_db:
