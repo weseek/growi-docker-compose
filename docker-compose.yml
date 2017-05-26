@@ -61,9 +61,9 @@ services:
     links:
       - app:app
     environment:
-      DOMAINS: 'test.crowi-plus.org -> http://app:3000'
-      STAGE: 'production'
-      FORCE_RENEW: 'true'
+      DOMAINS: 'crowi-plus.example.com -> http://app:3000'
+      # STAGE: 'production'
+      # FORCE_RENEW: 'true'
 
 volumes:
   crowi_data:
