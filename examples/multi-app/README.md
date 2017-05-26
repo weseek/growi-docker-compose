@@ -14,10 +14,14 @@ cd crowi-plus
 docker build -t crowiplusmulti_app .
 ```
 
+### replace docker-compose.yml
+```bash
+cp examples/multi-app/docker-compose.yml .
+```
+
 ### Start
 
 ```bash
-cd examples/multi-app
 docker-compose up
 ```
 
