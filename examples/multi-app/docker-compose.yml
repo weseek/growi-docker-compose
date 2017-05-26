@@ -2,105 +2,73 @@ version: '3'
 
 services:
   app-1:
+    extends:
+      file: docker-compose.base.yml
+      service: app
     image: "crowiplusmulti_app:latest"
     ports:
       - 127.0.0.1:3001:3000
     links:
-      - mongo:mongo
+      - mongo:mogo
       - redis:redis
       - elasticsearch:elasticsearch
     depends_on:
       - mongo
       - redis
       - elasticsearch
-    environment:
-      - MONGO_URI=mongodb://mongo:27017/crowi-1
-      - REDIS_URL=redis://redis:6379/crowi-1
-      - ELASTICSEARCH_URI=http://elasticsearch:9200/crowi-1
-      - PASSWORD_SEED=changeme
-    command: "dockerize
-              -wait tcp://mongo:27017
-              -wait tcp://redis:6379
-              -wait tcp://elasticsearch:9200
-              -timeout 60s
-              npm run server:prod:container"
     volumes:
       - crowi_data_1:/data
 
   app-2:
+    extends:
+      file: docker-compose.base.yml
+      service: app
     image: "crowiplusmulti_app:latest"
     ports:
       - 127.0.0.1:3002:3000
     links:
-      - mongo:mongo
+      - mongo:mogo
       - redis:redis
       - elasticsearch:elasticsearch
     depends_on:
       - mongo
       - redis
       - elasticsearch
-    environment:
-      - MONGO_URI=mongodb://mongo:27017/crowi-2
-      - REDIS_URL=redis://redis:6379/crowi-2
-      - ELASTICSEARCH_URI=http://elasticsearch:9200/crowi-2
-      - PASSWORD_SEED=changeme
-    command: "dockerize
-              -wait tcp://mongo:27017
-              -wait tcp://redis:6379
-              -wait tcp://elasticsearch:9200
-              -timeout 60s
-              npm run server:prod:container"
     volumes:
-      - crowi_data_3:/data
+      - crowi_data_2:/data
 
   app-3:
+    extends:
+      file: docker-compose.base.yml
+      service: app
     image: "crowiplusmulti_app:latest"
     ports:
       - 127.0.0.1:3003:3000
     links:
-      - mongo:mongo
+      - mongo:mogo
       - redis:redis
       - elasticsearch:elasticsearch
     depends_on:
       - mongo
       - redis
       - elasticsearch
-    environment:
-      - MONGO_URI=mongodb://mongo:27017/crowi-3
-      - REDIS_URL=redis://redis:6379/crowi-3
-      - ELASTICSEARCH_URI=http://elasticsearch:9200/crowi-3
-      - PASSWORD_SEED=changeme
-    command: "dockerize
-              -wait tcp://mongo:27017
-              -wait tcp://redis:6379
-              -wait tcp://elasticsearch:9200
-              -timeout 60s
-              npm run server:prod:container"
     volumes:
       - crowi_data_3:/data
 
   mongo:
-    image: mongo:3.4
-    volumes:
-      - mongo_configdb:/data/configdb
-      - mongo_db:/data/db
+    extends:
+      file: docker-compose.base.yml
+      service: mongo
 
   redis:
-    image: redis:3-alpine
-    volumes:
-      - redis_data:/data
+    extends:
+      file: docker-compose.base.yml
+      service: redis
 
   elasticsearch:
-    image: elasticsearch:5.3-alpine
-    command:
-      - sh
-      - -c
-      - "./bin/elasticsearch-plugin list | grep -q analysis-kuromoji || ./bin/elasticsearch-plugin install analysis-kuromoji;
-        ./bin/elasticsearch-plugin list | grep -q analysis-icu || ./bin/elasticsearch-plugin install analysis-icu;
-        /docker-entrypoint.sh elasticsearch"
-    volumes:
-      - es_data:/usr/share/elasticsearch/data
-      - ./esconfig:/usr/share/elasticsearch/config
+    extends:
+      file: docker-compose.base.yml
+      service: elasticsearch
 
 volumes:
   crowi_data_!:
