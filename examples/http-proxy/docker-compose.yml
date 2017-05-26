@@ -1,6 +1,23 @@
 version: '3'
 
 services:
+  # a fully automated HTTPS server powered by Nginx, Let's Encrypt
+  # see https://github.com/SteveLTN/https-portal
+  https-portal:
+    image: steveltn/https-portal:1
+    ports:
+      - '80:80'
+      - '443:443'
+    links:
+      - app:app
+    environment:
+      DOMAINS: 'example.com -> http://app:3000'
+      STAGE: 'production'
+      FORCE_RENEW: 'true'
+      WEBSOCKET: 'true'
+    volumes:
+      - https-portal_data:/var/lib/https-portal
+
   app:
     build:
       context: .
@@ -54,6 +71,7 @@ services:
       - ./esconfig:/usr/share/elasticsearch/config
 
 volumes:
+  https-portal_data:
   crowi_data:
   mongo_configdb:
   mongo_db:
