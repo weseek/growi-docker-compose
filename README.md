@@ -27,7 +27,7 @@ docker-compose stop
 
 # rebuild app container image
 git pull
-docker rm crowiplus_app_1
+docker-compose rm app
 docker rmi crowiplus_app
 docker-compose build
 
