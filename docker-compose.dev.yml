@@ -28,6 +28,7 @@ services:
         /docker-entrypoint.sh elasticsearch"
     volumes:
       - es_data:/usr/share/elasticsearch/data
+      - es_plugins:/usr/share/elasticsearch/plugins
       - ./esconfig:/usr/share/elasticsearch/config
 
   elasticsearch-head:
@@ -40,3 +41,4 @@ volumes:
   mongo_db:
   redis_data:
   es_data:
+  es_plugins:
