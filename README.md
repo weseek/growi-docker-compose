@@ -25,10 +25,13 @@ cd crowi-plus
 # stop
 docker-compose stop
 
-# rebuild app container image
-git pull
+# remove current container and images
 docker-compose rm app
 docker rmi crowiplus_app
+docker rmi weseek/crowi-plus:1
+
+# rebuild app container image
+git pull
 docker-compose build
 
 # start
