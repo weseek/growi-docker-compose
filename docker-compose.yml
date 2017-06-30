@@ -25,7 +25,7 @@ services:
               -wait tcp://redis:6379
               -wait tcp://elasticsearch:9200
               -timeout 60s
-              npm run server:prod:container"
+              npm run server:prod"
     volumes:
       - crowi_data:/data
 
