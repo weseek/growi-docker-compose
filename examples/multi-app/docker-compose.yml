@@ -104,7 +104,7 @@ services:
       - ./esconfig:/usr/share/elasticsearch/config
 
 volumes:
-  crowi_data_!:
+  crowi_data_1:
   crowi_data_2:
   crowi_data_3:
   mongo_configdb:
