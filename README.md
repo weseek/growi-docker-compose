@@ -59,12 +59,16 @@ RUN npm build:prod
 NOTE: DISABLED Environment Variables
 -------------------------------------
 
-Following is **disabled** because `docker-compose.yml` overwrites them.
+Following is **unchangable**.
 
 - PORT
 - NODE_ENV
+
+Following is **disabled** because `docker-compose.yml` overwrite them.
+
 - MONGO_URI
 - REDIS_URL
+- PASSWORD_SEED
 
 Change `docker-compose.yml` if you need.
 
