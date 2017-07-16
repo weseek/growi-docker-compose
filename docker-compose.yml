@@ -42,6 +42,8 @@ services:
 
   elasticsearch:
     image: elasticsearch:5.3-alpine
+    environment:
+      - "ES_JAVA_OPTS=-Xms2g -Xmx2g"  # decrease amount or just comment out this line if you cannot allocate enough memory
     command:
       - sh
       - -c
