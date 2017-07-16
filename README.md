@@ -17,8 +17,8 @@ and access to http://localhost:3000
 
 ### For Low-memory environment
 
-If you cannot allocate enough memory (for example when using AWS t2.micro instance),  
-decrease heap size for Elastic Search container with `ES_JAVA_OPTS` value in `docker-compose.yml`.
+If you cannot allocate enough memory for Elasticsearch (for example when using AWS t2.micro instance),  
+decrease heap size with `ES_JAVA_OPTS` value in `docker-compose.yml`.
 
 ```yml
 environment:
