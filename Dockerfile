@@ -11,10 +11,6 @@ RUN apk add --no-cache --virtual .dl-deps curl \
 
 WORKDIR ${APP_DIR}
 
-# Corresponds to `FILE_UPLOAD=local`
-RUN mkdir -p /data/uploads \
-    && ln -s /data/uploads $APP_DIR/public/uploads
-
 # install plugins if necessary
 RUN echo "install plugins" \
 #  && npm install --save \
