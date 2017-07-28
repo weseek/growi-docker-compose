@@ -20,6 +20,7 @@ services:
       - REDIS_URL=redis://redis:6379/crowi
       - ELASTICSEARCH_URI=http://elasticsearch:9200/crowi
       - PASSWORD_SEED=changeme
+      # - FILE_UPLOAD=local    # activate this line if you do not want to use AWS for file upload
     command: "dockerize
               -wait tcp://mongo:27017
               -wait tcp://redis:6379
