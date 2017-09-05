@@ -14,6 +14,27 @@ docker-compose up
 
 and access to http://localhost:3000
 
+### How to access from other than localhost
+
+Edit `docker-compose.yml` and modify `ports` for app
+
+#### Before
+
+```yml
+services:
+  app:
+    ports:
+      - 127.0.0.1:3000:3000
+```
+
+#### After
+
+```yml
+services:
+  app:
+    ports:
+      - 3000:3000
+```
 
 ### For Low-memory environment
 
