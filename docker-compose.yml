@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: ./Dockerfile
     ports:
-      - 127.0.0.1:3000:3000
+      - 127.0.0.1:3000:3000    # localhost only by default
     links:
       - mongo:mongo
       - redis:redis
