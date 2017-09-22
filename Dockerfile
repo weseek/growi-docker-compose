@@ -3,9 +3,9 @@ FROM weseek/crowi-plus:2
 ENV APP_DIR /opt/crowi-plus
 
 # install dockerize
-ENV DOCKERIZE_VERSION v0.3.0
+ENV DOCKERIZE_VERSION v0.5.0
 RUN apk add --no-cache --virtual .dl-deps curl \
-    && curl -SL https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+    && curl -SL https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
         | tar -xz -C /usr/local/bin \
     && apk del .dl-deps
 
