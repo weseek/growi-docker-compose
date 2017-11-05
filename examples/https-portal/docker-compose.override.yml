@@ -15,6 +15,7 @@ services:
       STAGE: 'production'
       FORCE_RENEW: 'true'
       WEBSOCKET: 'true'
+      CLIENT_MAX_BODY_SIZE: 0
     volumes:
       - https-portal_data:/var/lib/https-portal
 
