@@ -36,21 +36,13 @@ services:
       - 3000:3000
 ```
 
-### For Low-memory environment
+### For High-memory environment
 
-If you cannot allocate enough memory for Elasticsearch (for example when using AWS t2.micro instance),  
-decrease heap size with `ES_JAVA_OPTS` value in `docker-compose.yml`.
+If you have enough memory, increase heap size for Elasticsearch with `ES_JAVA_OPTS` value in `docker-compose.yml`.
 
 ```yml
 environment:
-  - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
-```
-
-or just comment out these lines.
-
-```yml
-#environment:
-#  - "ES_JAVA_OPTS=-Xms2g -Xmx2g"
+  - "ES_JAVA_OPTS=-Xms2g -Xmx2g"
 ```
 
 Upgrade
