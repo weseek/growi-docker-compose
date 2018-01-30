@@ -14,7 +14,7 @@ cd crowi-plus
 docker build -t crowiplusmulti_app .
 ```
 
-### replace docker-compose.yml
+### Replace docker-compose.yml
 ```bash
 cp examples/multi-app/docker-compose.yml .
 ```
@@ -35,25 +35,35 @@ and access to:
 Upgrade
 -------
 
+### Prepare
 ```bash
 # go to crowi-plus-docker-compose workdir
 cd crowi-plus
+```
 
-# stop
+### Stop
+
+```bash
 docker-compose stop
+```
 
-# remove current container and images
+### Remove app containers and images
+```bash
 docker-compose rm app-1
 docker-compose rm app-2
 docker-compose rm app-3
 docker rmi crowiplusmulti_app
-docker rmi crowiplus_app
 docker rmi weseek/crowi-plus:2
+```
 
-# rebuild app container image
+### Rebuild Image
+```bash
 git pull
 docker build -t crowiplusmulti_app .
+```
 
-# start
+### Start
+
+```bash
 docker-compose up
 ```
