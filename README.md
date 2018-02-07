@@ -89,12 +89,12 @@ RUN npm build:prod
 NOTE: DISABLED Environment Variables
 -------------------------------------
 
-Following is **unchangable**.
+Followings are **unchangable**.
 
 - PORT
 - NODE_ENV
 
-Following is **disabled** because `docker-compose.yml` overwrite them.
+Followings are **disabled** because they are overwritten by `docker-compose.yml`
 
 - MONGO_URI
 - REDIS_URL
@@ -123,7 +123,7 @@ Documentation
 Issues
 ------
 
-If you have any problems with or questions about this image, please contact us through a [GitHub issue](https://github.com/weseek/crowi-plus-docker-compose/issues).
+If you have any problems or questions about this image, please contact us through a [GitHub issue](https://github.com/weseek/crowi-plus-docker-compose/issues).
 
 
 License
