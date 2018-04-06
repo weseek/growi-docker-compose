@@ -3,8 +3,8 @@ growi-docker-compose
 
 Quick start [GROWI](https://github.com/weseek/growi) with docker-compose
 
-Install and Start
-------------------
+Start
+------
 
 ```bash
 git clone https://github.com/weseek/growi-docker-compose.git growi
@@ -85,7 +85,7 @@ RUN echo "install plugins" \
 # you must rebuild if install plugin at least one
 RUN npm build:prod
 ```
-
+    
 NOTE: DISABLED Environment Variables
 -------------------------------------
 
