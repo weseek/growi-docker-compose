@@ -20,7 +20,9 @@ services:
       - REDIS_URL=redis://redis:6379/growi
       - ELASTICSEARCH_URI=http://elasticsearch:9200/growi
       - PASSWORD_SEED=changeme
-      # - FILE_UPLOAD=local    # activate this line if you do not want to use AWS for file upload
+      # - FILE_UPLOAD=local    # activate this line if you use local storage of server rather than AWS
+      # - MATHJAX=1            # activate this line if you want to use MathJax
+      # - PLANTUML_URI=http:// # activate this line and specify if you use your own PlantUML server rather than public plantuml.com
     command: "dockerize
               -wait tcp://mongo:27017
               -wait tcp://redis:6379
