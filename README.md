@@ -5,6 +5,7 @@ Quick start [GROWI](https://github.com/weseek/growi) with docker-compose
 
 ![GROWI-x-dockercompose](https://user-images.githubusercontent.com/1638767/38307565-105956e2-384f-11e8-8534-b1128522d68d.png)
 
+
 Start
 ------
 
@@ -69,6 +70,12 @@ docker-compose build
 # start
 docker-compose up
 ```
+
+Migrate from crowi-plus-docker-compose
+---------------------------------------
+
+If you have used [weseek/crowi-plus docker image](https://hub.docker.com/r/weseek/crowi-plus/) with docker-compose so far, please see [migration document](https://github.com/weseek/growi-docker-compose/wiki/Migrate-from-crowi-plus-docker-compose).
+
 
 How to install plugins
 -----------------------
