@@ -2,7 +2,7 @@ version: '3'
 
 services:
   app-1:
-    image: "crowiplusmulti_app:latest"
+    image: "growimulti_app:latest"
     ports:
       - 127.0.0.1:3001:3000
     links:
@@ -14,9 +14,9 @@ services:
       - redis
       - elasticsearch
     environment:
-      - MONGO_URI=mongodb://mongo:27017/crowi-1
-      - REDIS_URL=redis://redis:6379/crowi-1
-      - ELASTICSEARCH_URI=http://elasticsearch:9200/crowi-1
+      - MONGO_URI=mongodb://mongo:27017/growi-1
+      - REDIS_URL=redis://redis:6379/growi-1
+      - ELASTICSEARCH_URI=http://elasticsearch:9200/growi-1
       - PASSWORD_SEED=changeme
     command: "dockerize
               -wait tcp://mongo:27017
@@ -25,10 +25,10 @@ services:
               -timeout 60s
               npm run server:prod"
     volumes:
-      - crowi_data_1:/data
+      - growi_data_1:/data
 
   app-2:
-    image: "crowiplusmulti_app:latest"
+    image: "growimulti_app:latest"
     ports:
       - 127.0.0.1:3002:3000
     links:
@@ -40,9 +40,9 @@ services:
       - redis
       - elasticsearch
     environment:
-      - MONGO_URI=mongodb://mongo:27017/crowi-2
-      - REDIS_URL=redis://redis:6379/crowi-2
-      - ELASTICSEARCH_URI=http://elasticsearch:9200/crowi-2
+      - MONGO_URI=mongodb://mongo:27017/growi-2
+      - REDIS_URL=redis://redis:6379/growi-2
+      - ELASTICSEARCH_URI=http://elasticsearch:9200/growi-2
       - PASSWORD_SEED=changeme
     command: "dockerize
               -wait tcp://mongo:27017
@@ -51,10 +51,10 @@ services:
               -timeout 60s
               npm run server:prod"
     volumes:
-      - crowi_data_2:/data
+      - growi_data_2:/data
 
   app-3:
-    image: "crowiplusmulti_app:latest"
+    image: "growimulti_app:latest"
     ports:
       - 127.0.0.1:3003:3000
     links:
@@ -66,9 +66,9 @@ services:
       - redis
       - elasticsearch
     environment:
-      - MONGO_URI=mongodb://mongo:27017/crowi-3
-      - REDIS_URL=redis://redis:6379/crowi-3
-      - ELASTICSEARCH_URI=http://elasticsearch:9200/crowi-3
+      - MONGO_URI=mongodb://mongo:27017/growi-3
+      - REDIS_URL=redis://redis:6379/growi-3
+      - ELASTICSEARCH_URI=http://elasticsearch:9200/growi-3
       - PASSWORD_SEED=changeme
     command: "dockerize
               -wait tcp://mongo:27017
@@ -77,7 +77,7 @@ services:
               -timeout 60s
               npm run server:prod"
     volumes:
-      - crowi_data_3:/data
+      - growi_data_3:/data
 
   mongo:
     image: mongo:3.4
@@ -106,9 +106,9 @@ services:
       - ./esconfig:/usr/share/elasticsearch/config
 
 volumes:
-  crowi_data_1:
-  crowi_data_2:
-  crowi_data_3:
+  growi_data_1:
+  growi_data_2:
+  growi_data_3:
   mongo_configdb:
   mongo_db:
   redis_data:

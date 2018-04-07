@@ -16,9 +16,9 @@ services:
       - redis
       - elasticsearch
     environment:
-      - MONGO_URI=mongodb://mongo:27017/crowi
-      - REDIS_URL=redis://redis:6379/crowi
-      - ELASTICSEARCH_URI=http://elasticsearch:9200/crowi
+      - MONGO_URI=mongodb://mongo:27017/growi
+      - REDIS_URL=redis://redis:6379/growi
+      - ELASTICSEARCH_URI=http://elasticsearch:9200/growi
       - PASSWORD_SEED=changeme
       # - FILE_UPLOAD=local    # activate this line if you do not want to use AWS for file upload
     command: "dockerize
@@ -28,7 +28,7 @@ services:
               -timeout 60s
               npm run server:prod"
     volumes:
-      - crowi_data:/data
+      - growi_data:/data
 
   mongo:
     image: mongo:3.4
@@ -57,7 +57,7 @@ services:
       - ./esconfig:/usr/share/elasticsearch/config
 
 volumes:
-  crowi_data:
+  growi_data:
   mongo_configdb:
   mongo_db:
   redis_data:

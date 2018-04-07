@@ -1,7 +1,7 @@
-crowi-plus-docker-compose Multiple Sites Example
-================================================
+growi-docker-compose Multiple Sites Example
+============================================
 
-This example enables the execution of three crowi-plus sites.
+This example enables the execution of three GROWI sites.
 
 Install and Start
 ------------------
@@ -9,9 +9,9 @@ Install and Start
 ### Build Image
 
 ```bash
-git clone https://github.com/weseek/crowi-plus-docker-compose.git crowi-plus
-cd crowi-plus
-docker build -t crowiplusmulti_app .
+git clone https://github.com/weseek/growi-docker-compose.git growi
+cd growi
+docker build -t growimulti_app .
 ```
 
 ### Replace docker-compose.yml
@@ -37,8 +37,8 @@ Upgrade
 
 ### Prepare
 ```bash
-# go to crowi-plus-docker-compose workdir
-cd crowi-plus
+# go to growi-docker-compose workdir
+cd growi
 ```
 
 ### Stop
@@ -52,14 +52,14 @@ docker-compose stop
 docker-compose rm app-1
 docker-compose rm app-2
 docker-compose rm app-3
-docker rmi crowiplusmulti_app
-docker rmi weseek/crowi-plus:2
+docker rmi growimulti_app
+docker rmi weseek/growi:3
 ```
 
 ### Rebuild Image
 ```bash
 git pull
-docker build -t crowiplusmulti_app .
+docker build -t growimulti_app .
 ```
 
 ### Start
