@@ -7,20 +7,16 @@ services:
       - 127.0.0.1:3001:3000
     links:
       - mongo:mongo
-      - redis:redis
       - elasticsearch:elasticsearch
     depends_on:
       - mongo
-      - redis
       - elasticsearch
     environment:
       - MONGO_URI=mongodb://mongo:27017/growi-1
-      - REDIS_URL=redis://redis:6379/growi-1
       - ELASTICSEARCH_URI=http://elasticsearch:9200/growi-1
       - PASSWORD_SEED=changeme
     command: "dockerize
               -wait tcp://mongo:27017
-              -wait tcp://redis:6379
               -wait tcp://elasticsearch:9200
               -timeout 60s
               npm run server:prod"
@@ -33,20 +29,16 @@ services:
       - 127.0.0.1:3002:3000
     links:
       - mongo:mongo
-      - redis:redis
       - elasticsearch:elasticsearch
     depends_on:
       - mongo
-      - redis
       - elasticsearch
     environment:
       - MONGO_URI=mongodb://mongo:27017/growi-2
-      - REDIS_URL=redis://redis:6379/growi-2
       - ELASTICSEARCH_URI=http://elasticsearch:9200/growi-2
       - PASSWORD_SEED=changeme
     command: "dockerize
               -wait tcp://mongo:27017
-              -wait tcp://redis:6379
               -wait tcp://elasticsearch:9200
               -timeout 60s
               npm run server:prod"
@@ -59,20 +51,16 @@ services:
       - 127.0.0.1:3003:3000
     links:
       - mongo:mongo
-      - redis:redis
       - elasticsearch:elasticsearch
     depends_on:
       - mongo
-      - redis
       - elasticsearch
     environment:
       - MONGO_URI=mongodb://mongo:27017/growi-3
-      - REDIS_URL=redis://redis:6379/growi-3
       - ELASTICSEARCH_URI=http://elasticsearch:9200/growi-3
       - PASSWORD_SEED=changeme
     command: "dockerize
               -wait tcp://mongo:27017
-              -wait tcp://redis:6379
               -wait tcp://elasticsearch:9200
               -timeout 60s
               npm run server:prod"
@@ -84,11 +72,6 @@ services:
     volumes:
       - mongo_configdb:/data/configdb
       - mongo_db:/data/db
-
-  redis:
-    image: redis:3-alpine
-    volumes:
-      - redis_data:/data
 
   elasticsearch:
     image: elasticsearch:5.3-alpine
@@ -111,6 +94,5 @@ volumes:
   growi_data_3:
   mongo_configdb:
   mongo_db:
-  redis_data:
   es_data:
   es_plugins:

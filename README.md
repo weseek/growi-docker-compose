@@ -119,7 +119,6 @@ Followings are **unchangable**.
 Followings are **disabled** because they are overwritten by `docker-compose.yml`
 
 - MONGO_URI
-- REDIS_URL
 - PASSWORD_SEED
 
 Change `docker-compose.yml` if you need.

@@ -9,13 +9,6 @@ services:
       - mongo_configdb:/data/configdb
       - mongo_db:/data/db
 
-  redis:
-    image: redis:3-alpine
-    ports:
-      - 6379:6379
-    volumes:
-      - redis_data:/data
-
   elasticsearch:
     image: elasticsearch:5.3-alpine
     environment:
@@ -41,6 +34,5 @@ services:
 volumes:
   mongo_configdb:
   mongo_db:
-  redis_data:
   es_data:
   es_plugins:

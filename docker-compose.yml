@@ -9,15 +9,12 @@ services:
       - 127.0.0.1:3000:3000    # localhost only by default
     links:
       - mongo:mongo
-      - redis:redis
       - elasticsearch:elasticsearch
     depends_on:
       - mongo
-      - redis
       - elasticsearch
     environment:
       - MONGO_URI=mongodb://mongo:27017/growi
-      - REDIS_URL=redis://redis:6379/growi
       - ELASTICSEARCH_URI=http://elasticsearch:9200/growi
       - PASSWORD_SEED=changeme
       # - FILE_UPLOAD=local    # activate this line if you use local storage of server rather than AWS
@@ -25,7 +22,6 @@ services:
       # - PLANTUML_URI=http:// # activate this line and specify if you use your own PlantUML server rather than public plantuml.com
     command: "dockerize
               -wait tcp://mongo:27017
-              -wait tcp://redis:6379
               -wait tcp://elasticsearch:9200
               -timeout 60s
               npm run server:prod"
@@ -37,11 +33,6 @@ services:
     volumes:
       - mongo_configdb:/data/configdb
       - mongo_db:/data/db
-
-  redis:
-    image: redis:3-alpine
-    volumes:
-      - redis_data:/data
 
   elasticsearch:
     image: elasticsearch:5.3-alpine
@@ -62,6 +53,5 @@ volumes:
   growi_data:
   mongo_configdb:
   mongo_db:
-  redis_data:
   es_data:
   es_plugins:
