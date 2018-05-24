@@ -73,7 +73,6 @@ docker-compose stop
 
 # remove current container and images
 docker-compose rm app
-docker rmi crowiplus_app
 docker rmi weseek/growi:3
 
 # rebuild app container image
