@@ -14,7 +14,6 @@ We show how to backup in case of you use Growi in docker-compose environment.
 ## Requirements
 
 - AWS S3 buckets and IAM account to store backup files
-- Docker execution environment
 
 ## Quick start
 
