@@ -80,6 +80,6 @@ So you can see log by `docker logs` command.
 
 # Note
 
-"mongodb-awesome-backup" is backup container.<br>
+"mongodb-awesome-backup" is backup container.  
 For more information, see the original site [weseek/mongodb-awesome-backup](https://github.com/weseek/mongodb-awesome-backup).
 
