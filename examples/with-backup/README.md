@@ -3,13 +3,13 @@ growi-docker-compose with backup example
 
 # Introduction
 
-GROWI stores page/user data to MongoDB.
+GROWI stores page/user data in MongoDB.
 
-This guide shows how to backup MongoDB in case of using [weseek/mongodb-awesome-backup](https://github.com/weseek/mongodb-awesome-backup).
+This guide shows you how to backup MongoDB if you use [weseek/mongodb-awesome-backup](https://github.com/weseek/mongodb-awesome-backup).
 
 # How to backup with "weseek/mongodb-awesome-backup"
 
-We show how to backup in case of you use Growi in docker-compose environment.
+We show you how to backup if you use Growi in docker-compose environment.
 
 ## Requirements
 
@@ -26,15 +26,16 @@ We show how to backup in case of you use Growi in docker-compose environment.
     AWS_ACCESS_KEY_ID=${Your IAM Access Key ID}
     AWS_SECRET_ACCESS_KEY=${Your IAM Secret Access Key}
     ```
-3. Copy config file of crond `./crontab/root`, and specify timing when execute mongodb-awesome-backup.
+3. Copy config file of crond `./crontab/root`, and specify the timing when you execute mongodb-awesome-backup.
 4. Set file permission `./crontab/root` to `root:root`.
 5. Edit `docker-compose.yml` these values
     - Set `S3_TARGET_BUCKET_URL` to valid URL of S3 bucket.
     - Set `SOME_FILE_NAME` to valid path of environment file you create.
 
-Then, you can get backup of MongoDB in S3.  
-The backup container is already execute with Growi when `docker-compose up`.
+Then the backup container will be launched and it will backup MongoDB data to S3.
 
+6. Execute GROWI with backup
+    - `docker-compose up`
 
 ## Configurations
 
@@ -50,11 +51,12 @@ You can use these environment values in `environment` section in docker-compose.
 - MONGODB_PASSWORD
 - MONGODB_AUTHDB
 
-For detail information, see the original site [weseek/mongodb-awesome-backup](https://github.com/weseek/mongodb-awesome-backup).
+For details, see the original site [weseek/mongodb-awesome-backup](https://github.com/weseek/mongodb-awesome-backup).
+
 
 ## Optional settings
 
-### Not if you want create environment file, you should to specify these in `docker-compose.yml`.
+### If you don't want to create environment file, you need to specify these in `docker-compose.yml`.
 
 ```yaml:docker-compose.yml
     : <snip>
@@ -72,14 +74,9 @@ For detail information, see the original site [weseek/mongodb-awesome-backup](ht
     : <snip>
 ```
 
-# Operation log of backup
-
-Logging of "mongodb-awesome-backup" is output STDOUT of container.
-
-So you can see log by `docker logs` command.
 
 # Note
 
-"mongodb-awesome-backup" is backup container.  
+"mongodb-awesome-backup" is a backup container.  
 For more information, see the original site [weseek/mongodb-awesome-backup](https://github.com/weseek/mongodb-awesome-backup).
 
