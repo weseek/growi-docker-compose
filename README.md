@@ -130,6 +130,7 @@ More convenient Examples
 
 * [Multiple sites](https://github.com/weseek/growi-docker-compose/tree/master/examples/multi-app)
 * [HTTPS(with Let's Encrypt) proxy integration](https://github.com/weseek/growi-docker-compose/tree/master/examples/https-portal)
+* [Backup MongoDB data](https://github.com/weseek/growi-docker-compose/tree/master/examples/backup-mongodb-data)
 
 
 Documentation
