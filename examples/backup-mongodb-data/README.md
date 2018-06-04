@@ -6,7 +6,7 @@ Introduction
 
 GROWI stores page/user data in MongoDB.
 
-This guide shows you how to backup MongoDB easily with [weseek/mongodb-awesome-backup](https://github.com/weseek/mongodb-awesome-backup).
+This guide shows you how to backup MongoDB on a regular basis with [weseek/mongodb-awesome-backup](https://github.com/weseek/mongodb-awesome-backup).
 
 Requirements
 -----------
