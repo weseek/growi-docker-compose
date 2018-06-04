@@ -3,9 +3,9 @@ growi-docker-compose with backup example
 
 # Introduction
 
-Growi has MongoDB to store own pages data and users data.
+GROWI stores page/user data to MongoDB.
 
-This guide show how to backup MongoDB in case of using [weseek/growi-docker-compose](https://github.com/weseek/growi-docker-compose).
+This guide shows how to backup MongoDB in case of using [weseek/mongodb-awesome-backup](https://github.com/weseek/mongodb-awesome-backup).
 
 # How to backup with "weseek/mongodb-awesome-backup"
 
@@ -21,7 +21,7 @@ We show how to backup in case of you use Growi in docker-compose environment.
     `git clone https://github.com/weseek/growi-docker-compose.git growi`
 1. Copy `docker-compose.override.yml` to above directory
     `cp -p examples/with-backup/docker-compose.override.yml growi`
-2. Create file `.env/SOME_FILE_NAME` or copy `.env/s3-secret-keys`, and set environment about secret ID and access key of S3.
+2. Create file `.env/SOME_FILE_NAME` to set environment variables for AWS.
     ```
     AWS_ACCESS_KEY_ID=${Your IAM Access Key ID}
     AWS_SECRET_ACCESS_KEY=${Your IAM Secret Access Key}
@@ -32,7 +32,7 @@ We show how to backup in case of you use Growi in docker-compose environment.
     - Set `S3_TARGET_BUCKET_URL` to valid URL of S3 bucket.
     - Set `SOME_FILE_NAME` to valid path of environment file you create.
 
-Then, you can get backup of MongoDB in S3.<br>
+Then, you can get backup of MongoDB in S3.  
 The backup container is already execute with Growi when `docker-compose up`.
 
 
