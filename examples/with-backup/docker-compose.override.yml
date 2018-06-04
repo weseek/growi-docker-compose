@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  backup:
+    image: weseek/mongodb-awesome-backup:0.2.0
+    environment:
+      - CRONMODE=true
+      - S3_TARGET_BUCKET_URL=s3://${REPLACE_THIS_TO_YOUR_BUCKET_NAME}/
+    links:
+      - mongo:mongo
+    env_file:
+      - .env/${SOME_FILE_NAME}
+    volumes:
+      - ./crontab/root:/var/spool/cron/crontabs/root
