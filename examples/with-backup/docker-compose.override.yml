@@ -1,54 +1,6 @@
 version: '3'
 
 services:
-  app:
-    build:
-      context: .
-      dockerfile: ./Dockerfile
-    ports:
-      - 127.0.0.1:3000:3000    # localhost only by default
-    links:
-      - mongo:mongo
-      - elasticsearch:elasticsearch
-    depends_on:
-      - mongo
-      - elasticsearch
-    environment:
-      - MONGO_URI=mongodb://mongo:27017/growi
-      - ELASTICSEARCH_URI=http://elasticsearch:9200/growi
-      - PASSWORD_SEED=changeme
-      # - FILE_UPLOAD=local    # activate this line if you use local storage of server rather than AWS
-      # - MATHJAX=1            # activate this line if you want to use MathJax
-      # - PLANTUML_URI=http:// # activate this line and specify if you use your own PlantUML server rather than public plantuml.com
-    command: "dockerize
-              -wait tcp://mongo:27017
-              -wait tcp://elasticsearch:9200
-              -timeout 60s
-              npm run server:prod"
-    volumes:
-      - growi_data:/data
-
-  mongo:
-    image: mongo:3.4
-    volumes:
-      - mongo_configdb:/data/configdb
-      - mongo_db:/data/db
-
-  elasticsearch:
-    image: elasticsearch:5.3-alpine
-    environment:
-      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"  # increase amount if you have enough memory
-    command:
-      - sh
-      - -c
-      - "./bin/elasticsearch-plugin list | grep -q analysis-kuromoji || ./bin/elasticsearch-plugin install analysis-kuromoji;
-        ./bin/elasticsearch-plugin list | grep -q analysis-icu || ./bin/elasticsearch-plugin install analysis-icu;
-        /docker-entrypoint.sh elasticsearch"
-    volumes:
-      - es_data:/usr/share/elasticsearch/data
-      - es_plugins:/usr/share/elasticsearch/plugins
-      - ./esconfig:/usr/share/elasticsearch/config
-
   backup:
     image: weseek/mongodb-awesome-backup:0.2.0
     environment:
@@ -60,10 +12,3 @@ services:
       - .env/${SOME_FILE_NAME}
     volumes:
       - ./crontab/root:/var/spool/cron/crontabs/root
-
-volumes:
-  growi_data:
-  mongo_configdb:
-  mongo_db:
-  es_data:
-  es_plugins:

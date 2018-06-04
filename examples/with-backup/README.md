@@ -17,7 +17,10 @@ We show how to backup in case of you use Growi in docker-compose environment.
 
 ## Quick start
 
-1. Override `docker-compose.override.yml` to your `docker-compose.yml`
+0. Clone repos
+    `git clone https://github.com/weseek/growi-docker-compose.git growi`
+1. Copy `docker-compose.override.yml` to above directory
+    `cp -p examples/with-backup/docker-compose.override.yml growi`
 2. Create file `.env/SOME_FILE_NAME` or copy `.env/s3-secret-keys`, and set environment about secret ID and access key of S3.
     ```
     AWS_ACCESS_KEY_ID=${Your IAM Access Key ID}
