@@ -5,12 +5,11 @@ services:
     image: weseek/mongodb-awesome-backup:0.2.0
     environment:
       - CRONMODE=true
-      - S3_TARGET_BUCKET_URL=s3://${REPLACE_THIS_TO_YOUR_BUCKET_NAME}/
+      - CRON_EXPRESSION=0 4 * * *                               # change it
       # - AWS_ACCESS_KEY_ID=${Your IAM Access Key ID}           # change it
       # - AWS_SECRET_ACCESS_KEY=${Your IAM Secret Access Key}   # change it
+      # - S3_TARGET_BUCKET_URL=s3://${Your Bucket Name}/        # change it
     links:
       - mongo:mongo
-    env_file:
-      - .env/${SOME_FILE_NAME}
     volumes:
       - ./crontab/root:/var/spool/cron/crontabs/root
