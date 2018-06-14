@@ -6,6 +6,8 @@ services:
     environment:
       - CRONMODE=true
       - S3_TARGET_BUCKET_URL=s3://${REPLACE_THIS_TO_YOUR_BUCKET_NAME}/
+      # - AWS_ACCESS_KEY_ID=${Your IAM Access Key ID}           # change it
+      # - AWS_SECRET_ACCESS_KEY=${Your IAM Secret Access Key}   # change it
     links:
       - mongo:mongo
     env_file:
