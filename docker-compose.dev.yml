@@ -31,8 +31,30 @@ services:
     ports:
       - 9100:9100
 
+  hackmd:
+    image: hackmdio/hackmd:1.1.1-ce
+    environment:
+      - HMD_DB_URL=mysql://hackmd:hackmdpass@mariadb:3306/hackmd
+      - HMD_CSP_ENABLE=false
+    ports:
+      - 3000:3000
+    depends_on:
+      - mariadb
+
+  mariadb:
+    image: mariadb:10.3
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_general_ci
+    environment:
+      - MYSQL_USER=hackmd
+      - MYSQL_PASSWORD=hackmdpass
+      - MYSQL_DATABASE=hackmd
+      - MYSQL_RANDOM_ROOT_PASSWORD=true
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
 volumes:
   mongo_configdb:
   mongo_db:
   es_data:
   es_plugins:
+  mariadb_data:
