@@ -1,0 +1,8 @@
+{
+  "production": {
+    "urlAddPort": true,
+    "email": true,
+    "imageUploadType": "imgur",
+    "sessionName": "connect.codimd.sid"
+  }
+}
