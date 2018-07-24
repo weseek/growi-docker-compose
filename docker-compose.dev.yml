@@ -32,12 +32,14 @@ services:
       - 9100:9100
 
   hackmd:
-    image: hackmdio/hackmd:1.1.1-ce
+    build:
+      context: ./hackmd
     environment:
+      - GROWI_URI=http://localhost:3000
       - HMD_DB_URL=mysql://hackmd:hackmdpass@mariadb:3306/hackmd
       - HMD_CSP_ENABLE=false
     ports:
-      - 3000:3000
+      - 3010:3000
     depends_on:
       - mariadb
 
