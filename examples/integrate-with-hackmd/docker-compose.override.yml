@@ -13,7 +13,7 @@ services:
       - HMD_DB_URL=mysql://hackmd:hackmdpass@mariadb:3306/hackmd
       - HMD_CSP_ENABLE=false
     ports:
-      - 3010:3000
+      - 3100:3000
     depends_on:
       - mariadb
 
