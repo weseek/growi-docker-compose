@@ -21,7 +21,7 @@ services:
       # - MATHJAX=1             # activate this line if you want to use MathJax
       # - PLANTUML_URI=http://  # activate this line and specify if you use your own PlantUML server rather than public plantuml.com
       # - HACKMD_URI=http://    # activate this line and specify HackMD server URI which can be accessed from GROWI client browsers
-      # - HACKMD_URI_FOR_SERVER=http://hackmd:3100  # activate this line and specify HackMD server URI which can be accessed from this server container
+      # - HACKMD_URI_FOR_SERVER=http://hackmd:3000  # activate this line and specify HackMD server URI which can be accessed from this server container
 
     command: "dockerize
               -wait tcp://mongo:27017

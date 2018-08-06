@@ -20,7 +20,7 @@ cp examples/integrate-with-hackmd/docker-compose.override.yml .
 | variables               | example values                  | description                                                                                                       |
 | ----------------------- | ------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | `HACKMD_URI`            | `https://hackmd.demo.growi.org` | HackMD server URI<br>which can be accessed from GROWI client browser                                              |
-| `HACKMD_URI_FOR_SERVER` | `http://hackmd:3010`            | HackMD server URI<br>which can be accessed from GROWI server container<br>Default: The same value as `HACKMD_URI` |
+| `HACKMD_URI_FOR_SERVER` | `http://hackmd:3000`            | HackMD server URI<br>which can be accessed from GROWI server container<br>Default: The same value as `HACKMD_URI` |
 
 
 
