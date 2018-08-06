@@ -48,7 +48,8 @@ docker-compose up
 
 and access to:
 
-* http://localhost:3000
+* http://localhost:3000 (GROWI)
+* http://localhost:3100 (HackMD directly)
 
 
 Configuration of HackMD(CodiMD)
