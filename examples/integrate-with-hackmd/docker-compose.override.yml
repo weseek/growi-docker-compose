@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  ##
+  # HackMD(CodiMD) container
+  # see https://github.com/hackmdio/codimd#configuration
+  #
+  hackmd:
+    build:
+      context: ./hackmd
+    environment:
+      - GROWI_URI=http://CHANGE-HERE
+      - HMD_DB_URL=mysql://hackmd:hackmdpass@mariadb:3306/hackmd
+      - HMD_CSP_ENABLE=false
+    ports:
+      - 3100:3000
+    depends_on:
+      - mariadb
+
+  ##
+  # MariaDB
+  # see https://hub.docker.com/_/mariadb/
+  mariadb:
+    image: mariadb:10.3
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_general_ci
+    environment:
+      - MYSQL_USER=hackmd
+      - MYSQL_PASSWORD=hackmdpass
+      - MYSQL_DATABASE=hackmd
+      - MYSQL_RANDOM_ROOT_PASSWORD=true
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+volumes:
+  mariadb_data:
