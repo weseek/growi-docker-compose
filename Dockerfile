@@ -3,7 +3,7 @@ FROM weseek/growi:3
 ENV APP_DIR /opt/growi
 
 # install dockerize
-ENV DOCKERIZE_VERSION v0.5.0
+ENV DOCKERIZE_VERSION v0.6.1
 RUN apk add --no-cache --virtual .dl-deps curl \
     && curl -SL https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
         | tar -xz -C /usr/local/bin \
