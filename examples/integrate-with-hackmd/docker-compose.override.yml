@@ -10,8 +10,8 @@ services:
       context: ./hackmd
     environment:
       - GROWI_URI=http://CHANGE-HERE
-      - CMD_DB_URL=mysql://hackmd:hackmdpass@mariadb:3306/hackmd
-      - CMD_CSP_ENABLE=false
+      - HMD_DB_URL=mysql://hackmd:hackmdpass@mariadb:3306/hackmd
+      - HMD_CSP_ENABLE=false
     ports:
       - 3010:3000
     depends_on:
