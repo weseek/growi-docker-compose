@@ -31,9 +31,9 @@ cp examples/integrate-with-hackmd/docker-compose.override.yml .
 
 ### Add environment variables to `hackmd` container
 
-| variables   | example values           | description                                                            |
-| ----------- | ------------------------ | ---------------------------------------------------------------------- |
-| `GROWI_URI` | `https://demo.growi.org` | GROWI server URI<br>which can be accessed from HackMD server container |
+| variables   | example values           | description                                                         |
+| ----------- | ------------------------ | ------------------------------------------------------------------- |
+| `GROWI_URI` | `https://demo.growi.org` | GROWI server URI<br>which can be accessed from GROWI client browser |
 
 
 1. Open `docker-compose.override.yml`
