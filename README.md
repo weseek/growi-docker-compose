@@ -137,8 +137,7 @@ More convenient Examples
 Documentation
 --------------
 
-* [GROWI wiki](https://github.com/weseek/growi/wiki)
-  * [Questions and Answers](https://github.com/weseek/growi/wiki/Questions-and-Answers)
+* [GROWI Docs](https://docs.growi.org/)
   
   
 Issues
