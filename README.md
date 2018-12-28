@@ -86,7 +86,7 @@ docker-compose up
 Migrate from crowi-plus-docker-compose
 ---------------------------------------
 
-If you have used [weseek/crowi-plus docker image](https://hub.docker.com/r/weseek/crowi-plus/) with docker-compose so far, please see [migration document](https://github.com/weseek/growi-docker-compose/wiki/Migrate-from-crowi-plus-docker-compose).
+If you have used [weseek/crowi-plus docker image](https://hub.docker.com/r/weseek/crowi-plus/) with docker-compose so far, please see [migration document](https://docs.growi.org/guide/migration-guide/from-crowi-plus-docker-compose.html).
 
 
 How to install plugins
