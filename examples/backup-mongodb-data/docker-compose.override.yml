@@ -11,5 +11,6 @@ services:
       # - S3_TARGET_BUCKET_URL=s3://${Your Bucket Name}/        # change it
     links:
       - mongo:mongo
+    restart: unless-stopped
     volumes:
       - ./crontab/root:/var/spool/cron/crontabs/root

@@ -16,6 +16,7 @@ services:
       - 127.0.0.1:3100:3000   # localhost only by default
     depends_on:
       - mariadb
+    restart: unless-stopped
 
   ##
   # MariaDB
@@ -28,6 +29,7 @@ services:
       - MYSQL_PASSWORD=hackmdpass
       - MYSQL_DATABASE=hackmd
       - MYSQL_RANDOM_ROOT_PASSWORD=true
+    restart: unless-stopped
     volumes:
       - mariadb_data:/var/lib/mysql
 

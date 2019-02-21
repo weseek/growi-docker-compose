@@ -28,11 +28,13 @@ services:
               -wait tcp://elasticsearch:9200
               -timeout 60s
               npm run server:prod"
+    restart: unless-stopped
     volumes:
       - growi_data:/data
 
   mongo:
     image: mongo:3.4
+    restart: unless-stopped
     volumes:
       - mongo_configdb:/data/configdb
       - mongo_db:/data/db
@@ -47,6 +49,7 @@ services:
       - "./bin/elasticsearch-plugin list | grep -q analysis-kuromoji || ./bin/elasticsearch-plugin install analysis-kuromoji;
         ./bin/elasticsearch-plugin list | grep -q analysis-icu || ./bin/elasticsearch-plugin install analysis-icu;
         /docker-entrypoint.sh elasticsearch"
+    restart: unless-stopped
     volumes:
       - es_data:/usr/share/elasticsearch/data
       - es_plugins:/usr/share/elasticsearch/plugins
