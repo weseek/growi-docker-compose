@@ -1,5 +1,7 @@
 FROM weseek/growi:3
 
+MAINTAINER Yuki Takei <yuki@weseek.co.jp>
+
 ENV APP_DIR /opt/growi
 
 # install dockerize
