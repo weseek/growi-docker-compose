@@ -50,5 +50,4 @@ volumes:
   mongo_configdb:
   mongo_db:
   es_data:
-  es_plugins:
   sqlite_db:
