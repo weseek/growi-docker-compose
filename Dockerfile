@@ -1,4 +1,5 @@
 FROM weseek/growi:3
+LABEL maintainer Yuki Takei <yuki@weseek.co.jp>
 
 ENV APP_DIR /opt/growi
 

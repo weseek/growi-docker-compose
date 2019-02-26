@@ -2,7 +2,7 @@ version: '3'
 
 services:
   mongo:
-    image: mongo:3.4
+    image: mongo:3.6
     ports:
       - 27017:27017
     volumes:
@@ -10,21 +10,21 @@ services:
       - mongo_db:/data/db
 
   elasticsearch:
-    image: elasticsearch:5.3-alpine
-    environment:
-      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
+    build:
+      context: ./elasticsearch
+      dockerfile: ./Dockerfile
     ports:
       - 9200:9200
-    command:
-      - sh
-      - -c
-      - "./bin/elasticsearch-plugin list | grep -q analysis-kuromoji || ./bin/elasticsearch-plugin install analysis-kuromoji;
-        ./bin/elasticsearch-plugin list | grep -q analysis-icu || ./bin/elasticsearch-plugin install analysis-icu;
-        /docker-entrypoint.sh elasticsearch"
+    environment:
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
     volumes:
       - es_data:/usr/share/elasticsearch/data
-      - es_plugins:/usr/share/elasticsearch/plugins
-      - ./esconfig:/usr/share/elasticsearch/config
+      - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
 
   elasticsearch-head:
     image: mobz/elasticsearch-head:5-alpine
@@ -50,5 +50,4 @@ volumes:
   mongo_configdb:
   mongo_db:
   es_data:
-  es_plugins:
   sqlite_db:
