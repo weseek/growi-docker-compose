@@ -64,6 +64,12 @@ environment:
 Upgrade
 -------
 
+### Upgrading to v3.4.x from v3.3.x or below
+
+see [Upgrading to GROWI v3.4.x](https://docs.growi.org/guide/upgrading/34x.html).
+
+### Upgrading app container
+
 ```bash
 # go to growi-docker-compose workdir
 cd growi
