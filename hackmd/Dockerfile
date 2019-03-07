@@ -1,17 +1,17 @@
-FROM hackmdio/hackmd:1.2.0-alpine
+FROM hackmdio/hackmd:1.3.0-alpine
 LABEL maintainer Yuki Takei <yuki@weseek.co.jp>
 
 # copy script to apply GROWI agent
-COPY apply-growi-agent.sh /hackmd/apply-growi-agent.sh
-RUN chmod +x /hackmd/apply-growi-agent.sh
+COPY apply-growi-agent.sh /codimd/apply-growi-agent.sh
+RUN chmod +x /codimd/apply-growi-agent.sh
 # run the script
-RUN /hackmd/apply-growi-agent.sh
+RUN /codimd/apply-growi-agent.sh
 
 # overwrite HackMD config file
-RUN rm -f /files/config.json && rm -f /hackmd/config.json
+RUN rm -f /files/config.json && rm -f /codimd/config.json
 COPY config.json /files/
-RUN ln -s /files/config.json /hackmd/config.json
+RUN ln -s /files/config.json /codimd/config.json
 
 # create sqlite data dir
-RUN mkdir /files/sqlite && chown hackmd /files/sqlite
-RUN ln -s /files/sqlite /hackmd/sqlite
+RUN mkdir /files/sqlite && chown codimd /files/sqlite
+RUN ln -s /files/sqlite /codimd/sqlite
