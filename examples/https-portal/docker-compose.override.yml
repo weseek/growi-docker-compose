@@ -13,7 +13,7 @@ services:
     environment:
       DOMAINS: 'example.com -> http://app:3000'
       STAGE: 'production'
-      FORCE_RENEW: 'true'
+      FORCE_RENEW: 'false'
       WEBSOCKET: 'true'
       CLIENT_MAX_BODY_SIZE: 0
     restart: unless-stopped
