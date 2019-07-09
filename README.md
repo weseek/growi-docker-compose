@@ -126,11 +126,6 @@ Followings are **disabled** because they are overwritten by `docker-compose.yml`
 - MONGO_URI
 - PASSWORD_SEED
 
-FORCE_WIKI_MODE
-
-- Change to `'private'` to force private wiki mode
-- Change to `'public'` to force public wiki mode
-
 Change `docker-compose.yml` if you need.
 
 Others conform to [weseek/growi](https://github.com/weseek/growi#environment-variables)
