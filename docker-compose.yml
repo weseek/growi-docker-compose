@@ -23,6 +23,8 @@ services:
       # - PLANTUML_URI=http://  # activate this line and specify if you use your own PlantUML server rather than public plantuml.com
       # - HACKMD_URI=http://    # activate this line and specify HackMD server URI which can be accessed from GROWI client browsers
       # - HACKMD_URI_FOR_SERVER=http://hackmd:3000  # activate this line and specify HackMD server URI which can be accessed from this server container
+      # - WIKI_MODE='public'    # activate this line to make wiki public mode
+      # - WIKI_MODE='private'   # activate this line to make wiki private mode
 
     command: "dockerize
               -wait tcp://mongo:27017
