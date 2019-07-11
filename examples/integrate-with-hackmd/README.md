@@ -17,17 +17,19 @@ cp examples/integrate-with-hackmd/docker-compose.override.yml .
 
 ### Add environment variables to `app` container
 
-| variables               | example values                  | description                                                                                                       |
-| ----------------------- | ------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `HACKMD_URI`            | `https://hackmd.demo.growi.org` | HackMD server URI<br>which can be accessed from GROWI client browser                                              |
-| `HACKMD_URI_FOR_SERVER` | `http://hackmd:3000`            | HackMD server URI<br>which can be accessed from GROWI server container<br>Default: The same value as `HACKMD_URI` |
+| variables               | example values                  | description                                                                                                                      |
+| ----------------------- | ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `HACKMD_URI`            | `https://hackmd.demo.growi.org` | HackMD server URI<br>which can be accessed from GROWI client browser                                                             |
+| `HACKMD_URI_FOR_SERVER` | `http://hackmd:3000`            | HackMD server URI<br>which can be accessed from GROWI server container<br>Default: The same value as `HACKMD_URI`                |
+| `APP_SITE_URL`          | `https://demo.growi.org`        | GROWI server URL<br>which can be accessed from client browser<br>(This value will be same as `GROWI_URI` in `hackmd` container.) |
 
 
 
 1. Open `docker-compose.yml`
 2. Edit `app` container's settings
-  1. Set `HACKMD_URI`
+  1. Set `HACKMD_URI`, `APP_SITE_URL`
   2. Set `HACKMD_URI_FOR_SERVER` if you need
+
 
 ### Add environment variables to `hackmd` container
 
