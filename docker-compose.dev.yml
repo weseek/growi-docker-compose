@@ -27,7 +27,7 @@ services:
       - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
 
   elasticsearch-head:
-    image: mobz/elasticsearch-head:5-alpine
+    image: tobias74/elasticsearch-head:6
     ports:
       - 9100:9100
 
