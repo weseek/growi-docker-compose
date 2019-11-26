@@ -10,7 +10,6 @@ RUN apk add --no-cache --virtual .dl-deps curl \
     && curl -sL https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
         | tar -xz -C /usr/local/bin \
     && apk del .dl-deps
-USER node
 
 WORKDIR ${APP_DIR}
 
