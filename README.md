@@ -64,9 +64,10 @@ environment:
 Upgrade
 -------
 
-### Upgrading to v3.4.x from v3.3.x or below
+### Check upgrading guide
 
-see [Upgrading to GROWI v3.4.x](https://docs.growi.org/guide/upgrading/34x.html).
+Access to [Admin's guide - GROWI Docs](https://docs.growi.org/en/admin-guide/)  
+and see 'Upgrading' section.
 
 ### Upgrading app container
 
@@ -79,7 +80,7 @@ docker-compose stop
 
 # remove current container and images
 docker-compose rm app
-docker rmi weseek/growi:3
+docker rmi weseek/growi:4
 
 # rebuild app container image
 git pull
