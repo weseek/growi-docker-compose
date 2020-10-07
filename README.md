@@ -69,6 +69,10 @@ Upgrade
 Access to [Admin's guide - GROWI Docs](https://docs.growi.org/en/admin-guide/)  
 and see 'Upgrading' section.
 
+#### Upgrading to v4.2 or later
+
+To upgrade app to v4.2 or later, you have to upgrade mongoDB to v4.x. Please see [this page](https://docs.growi.org/en/admin-guide/upgrading/42x.html) for the details.
+
 ### Upgrading app container
 
 ```bash
