@@ -66,8 +66,7 @@ Upgrade
 
 ### Check upgrading guide
 
-Access to [Admin's guide - GROWI Docs](https://docs.growi.org/en/admin-guide/)  
-and see 'Upgrading' section.
+Please be sure to access [Admin's guide - GROWI Docs](https://docs.growi.org/en/admin-guide/)([en](https://docs.growi.org/en/admin-guide/)/[ja](https://docs.growi.org/ja/admin-guide/)) and see 'Upgrade' section before upgrading. Sometimes you may have to deal with problems that may occur by yourself.
 
 #### Upgrading to v4.2 or later
 
