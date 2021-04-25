@@ -5,6 +5,7 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
+    image: suitai/dockerize-growi:4
     ports:
       - 127.0.0.1:3000:3000    # localhost only by default
     links:
@@ -46,6 +47,7 @@ services:
     build:
       context: ./elasticsearch
       dockerfile: ./Dockerfile
+    image: suitai/elastic-kuromoji:6.8.10
     environment:
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms256m -Xmx256m"  # increase amount if you have enough memory
