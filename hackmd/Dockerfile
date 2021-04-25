@@ -1,5 +1,4 @@
 FROM hackmdio/hackmd:1.3.0-alpine
-LABEL maintainer Yuki Takei <yuki@weseek.co.jp>
 
 # copy script to apply GROWI agent
 COPY apply-growi-agent.sh /codimd/apply-growi-agent.sh
