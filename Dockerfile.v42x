@@ -15,8 +15,8 @@ WORKDIR ${APP_DIR}
 
 # install plugins if necessary
 # ;;
-# ;; NOTE: In GROWI v3 and later,
-# ;;       2 of official plugins (growi-plugin-lsx and growi-plugin-pukiwiki-like-linker)
+# ;; NOTE: In GROWI v4.3 and later,
+# ;;       some official plugins (growi-plugin-lsx, growi-plugin-pukiwiki-like-linker and growi-plugin-attachment-refs)
 # ;;       are now included in the 'weseek/growi' image.
 # ;;       Therefore you will not need following lines except when you install third-party plugins.
 # ;;
