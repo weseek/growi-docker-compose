@@ -99,24 +99,6 @@ Migrate from crowi-plus-docker-compose
 If you have used [weseek/crowi-plus docker image](https://hub.docker.com/r/weseek/crowi-plus/) with docker-compose so far, please see [migration document](https://docs.growi.org/guide/migration-guide/from-crowi-plus-docker-compose.html).
 
 
-How to install plugins
------------------------
-
-edit `Dockerfile` and activate commented out lines.
-
-### Example
-
-```dockerfile
-# install plugins if necessary
-RUN echo "install plugins" \
-  && yarn add \
-     growi-plugin-XXX \
-     growi-plugin-YYY \
-  && echo "done."
-# you must rebuild if install plugin at least one
-RUN npm build:prod
-```
-    
 NOTE: DISABLED Environment Variables
 -------------------------------------
 
