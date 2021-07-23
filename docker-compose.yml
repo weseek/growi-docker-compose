@@ -4,7 +4,8 @@ services:
   app:
     build:
       context: .
-      dockerfile: ./Dockerfile
+      dockerfile: ./Dockerfile            # for v4.3.x or later
+      # dockerfile: ./Dockerfile.v42x       # for v4.2.x or earlier
     ports:
       - 127.0.0.1:3000:3000    # localhost only by default
     links:
