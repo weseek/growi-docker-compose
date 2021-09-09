@@ -4,8 +4,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: ./Dockerfile            # for v4.3.x or later
-      # dockerfile: ./Dockerfile.v42x       # for v4.2.x or earlier
+      dockerfile: ./Dockerfile
     ports:
       - 127.0.0.1:3000:3000    # localhost only by default
     links:
@@ -27,11 +26,13 @@ services:
       # - FORCE_WIKI_MODE='public'    # activate this line to force wiki public mode
       # - FORCE_WIKI_MODE='private'   # activate this line to force wiki private mode
 
-    command: "dockerize
-              -wait tcp://mongo:27017
-              -wait tcp://elasticsearch:9200
-              -timeout 60s
-              npm run server:prod"
+    entrypoint: "dockerize
+                  -wait tcp://mongo:27017
+                  -wait tcp://elasticsearch:9200
+                  -timeout 60s
+                  /docker-entrypoint.sh"
+    command: node -r dotenv-flow/config --expose_gc dist/server/app.js
+
     restart: unless-stopped
     volumes:
       - growi_data:/data
