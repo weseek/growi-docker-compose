@@ -43,6 +43,14 @@ services:
       - mongo_configdb:/data/configdb
       - mongo_db:/data/db
 
+  ogp:
+    build:
+      context: ./ogp
+      dockerfile: ./Dockerfile
+    ports:
+      - 8088:8088
+    restart: unless-stopped
+  
   elasticsearch:
     build:
       context: ./elasticsearch
