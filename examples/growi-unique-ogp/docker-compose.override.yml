@@ -1,7 +1,8 @@
 version: '3'
 
 services:
-  ogp: weseek/growi-unique-ogp
+  ogp: 
+    image: ghcr.io/weseek/growi-unique-ogp:latest
     environment:
       - OGP_URI=https://CHANGE-HERE
     ports:
