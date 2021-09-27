@@ -19,7 +19,7 @@ cp examples/growi-unique-ogp/docker-compose.override.yml .
 
 | variables               | example values                  | description                                                                                                       |
 | ----------------------- | ------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `OGP_URI`            | `https://CHANGE-HERE` | growi-unique-ogp URI<br>which can be accessed from GROWI |
+| `OGP_URI`            | `https://CHANGE-HERE` | OGP_URI<br>which can be accessed from GROWI |
 
 
 1. Open `docker-compose.yml`
