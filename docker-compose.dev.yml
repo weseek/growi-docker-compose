@@ -9,7 +9,7 @@ services:
       - mongo_configdb:/data/configdb
       - mongo_db:/data/db
 
-  ogp: weseek/unique-ogp
+  ogp: weseek/growi-unique-ogp
     ports:
       - 8088:8088
     restart: unless-stopped
