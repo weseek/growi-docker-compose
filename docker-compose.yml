@@ -42,7 +42,7 @@ services:
     volumes:
       - mongo_configdb:/data/configdb
       - mongo_db:/data/db
-  
+
   elasticsearch:
     build:
       context: ./elasticsearch
