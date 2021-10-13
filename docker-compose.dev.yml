@@ -9,6 +9,12 @@ services:
       - mongo_configdb:/data/configdb
       - mongo_db:/data/db
 
+  ogp: 
+    image: ghcr.io/weseek/growi-unique-ogp:latest
+    ports:
+      - 8088:8088
+    restart: unless-stopped
+
   elasticsearch:
     build:
       context: ./elasticsearch
