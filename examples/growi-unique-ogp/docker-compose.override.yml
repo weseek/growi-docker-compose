@@ -3,8 +3,6 @@ version: '3'
 services:
   ogp: 
     image: ghcr.io/weseek/growi-unique-ogp:latest
-    environment:
-      - OGP_URI=https://CHANGE-HERE
     ports:
       - 8088:8088
     restart: unless-stopped
