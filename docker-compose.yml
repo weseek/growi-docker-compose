@@ -50,7 +50,8 @@ services:
       dockerfile: ./Dockerfile
     environment:
       - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"  # increase amount if you have enough memory
+      - "ES_JAVA_OPTS=-Xms256m -Xmx256m -Dlog4j2.formatMsgNoLookups=true"  # increase amount if you have enough memory
+    # `-Dlog4j2.formatMsgNoLookups=true` is CVE-2021-44228 patch for Elasticsearch <= 6.8.20/7.16.0; never delete it unless updated to a newer version
     ulimits:
       memlock:
         soft: -1
