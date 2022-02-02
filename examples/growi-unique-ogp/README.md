@@ -26,6 +26,12 @@ cp examples/growi-unique-ogp/docker-compose.override.yml .
 2. Edit `app` container's settings
   1. Set `OGP_URI`
 
+Please add OGP_URI as follows in docker-compose.yml
+```yml
+environment:
+  - OGP_URI=http://ogp:8088
+```
+
 ### Start
 
 ```bash
