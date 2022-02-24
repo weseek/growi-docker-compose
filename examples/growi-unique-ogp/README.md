@@ -24,7 +24,7 @@ cp examples/growi-unique-ogp/docker-compose.override.yml .
 
 1. Open `docker-compose.yml`
 2. Edit `app` container's settings
-  1. Set `OGP_URI`
+3. Set `OGP_URI`
 
 Please add OGP_URI as follows in docker-compose.yml
 ```yml
@@ -42,6 +42,18 @@ environment:
 docker-compose up
 ```
 
-and access to:
+- access to the following URL for confirmation
 
-* http://localhost:8088 (OGP server directly)
+* http://localhost:3000/ogp/<page_id> (OGP server directly)
+
+### Setting to publish ogp on the internet
+
+1. access to http://localhost:3000/admin/security
+2. update Guest users access to Accept(Guests can read only)
+
+![accept_guests_can_read_only](https://user-images.githubusercontent.com/83065937/155471123-397a71b4-296c-4ca0-bf65-d03cdf8da0bc.PNG)
+
+1. access to http://localhost:3000/admin/app
+2. update Site URL settings(Database URL) to your URL to be published as follows
+
+![ogp_url_setting](https://user-images.githubusercontent.com/83065937/155470209-8514ba80-4fd9-4f83-9972-dee6d6417a3d.PNG)
