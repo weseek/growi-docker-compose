@@ -50,7 +50,7 @@ docker-compose up
 ![accept_guests_can_read_only](https://user-images.githubusercontent.com/83065937/155471123-397a71b4-296c-4ca0-bf65-d03cdf8da0bc.PNG)
 
 1. access to http://localhost:3000/admin/app
-2. update Site URL settings(Database URL) to your URL to be published as follows
+2. update Site URL settings(Database URL) to your URL to be published on the internet as follows
 
 ![ogp_url_setting](https://user-images.githubusercontent.com/83065937/155470209-8514ba80-4fd9-4f83-9972-dee6d6417a3d.PNG)
 
