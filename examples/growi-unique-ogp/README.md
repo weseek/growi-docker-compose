@@ -44,29 +44,29 @@ docker-compose up
 
 ### Setting to publish ogp on the internet
 
-1. access to http://localhost:3000/admin/security
-2. update Guest users access to Accept(Guests can read only)
+1. Access to http://localhost:3000/admin/security
+2. Update Guest users access to Accept(Guests can read only)
 
 ![accept_guests_can_read_only](https://user-images.githubusercontent.com/83065937/155471123-397a71b4-296c-4ca0-bf65-d03cdf8da0bc.PNG)
 
-1. access to http://localhost:3000/admin/app
-2. update Site URL settings(Database URL) to your URL to be published on the internet as follows
+1. Access to http://localhost:3000/admin/app
+2. Update Site URL settings(Database URL) to your URL to be published on the internet as follows
 
 ![ogp_url_setting](https://user-images.githubusercontent.com/83065937/155470209-8514ba80-4fd9-4f83-9972-dee6d6417a3d.PNG)
 
-1. access to http://localhost:3000/admin/app
-2. update File Upload Settings 
-3. the below image shows the case MongoDB file upload system is used
+1. Access to http://localhost:3000/admin/app
+2. Update File Upload Settings 
+3. The below image shows the case MongoDB file upload system is used
 
 ![file_upload_setting](https://user-images.githubusercontent.com/83065937/155473751-8e7f63d0-787a-4953-be25-789fa1ed78ff.PNG)
 
 ### Check
 
-access to the following URL to check page OGP image directly
+Access to the following URL to check page OGP image directly
 
 * http://localhost:3000/ogp/<PAGE_ID>
 
-paste the following URL to Slack, other SNS, and pages to make sure OGP is displayed
+Paste the following URL to Slack, other SNS, and pages to make sure OGP is displayed
 
 * <YOUR_SITE_URL>/<PAGE_PATH>
-* example: https://growi.org/page-path
+* Example: https://growi.org/page-path
