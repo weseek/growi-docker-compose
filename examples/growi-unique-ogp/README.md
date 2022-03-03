@@ -2,7 +2,7 @@ growi-docker-compose with growi-unique-ogp Integration Example
 =====================================================
 
 This example enables GROWI to integrate with growi-unique-ogp
-so that user will be able to generate ogp.
+so that the user will be able to generate ogp.
 
 Install and Start
 ------------------
@@ -15,7 +15,7 @@ cd growi
 cp examples/growi-unique-ogp/docker-compose.override.yml .
 ```
 
-### Add environment variables to `app` container
+### Add environment variables to the `app` container
 
 | variables               | example values                  | description                                                                                                       |
 | ----------------------- | ------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
@@ -23,10 +23,10 @@ cp examples/growi-unique-ogp/docker-compose.override.yml .
 
 
 1. Open `docker-compose.yml`
-2. Edit `app` container's settings
+2. Edit the `app` container's settings
 3. Set `OGP_URI`
 
-Please add OGP_URI as follows in docker-compose.yml
+Please add OGP_URI as follows to your docker-compose.yml
 ```yml
 environment:
   - MONGO_URI=mongodb://mongo:27017/growi
@@ -42,27 +42,27 @@ environment:
 docker-compose up
 ```
 
-### Setting to publish ogp on the internet
+### Setting ogp to publish on the internet
 
-1. Access to http://localhost:3000/admin/security
-2. Update Guest users access to Accept(Guests can read only)
+1. Access http://localhost:3000/admin/security
+2. Update "Guest Users Access" to "Accept(Guests can read only)"
 
 ![accept_guests_can_read_only](https://user-images.githubusercontent.com/83065937/155471123-397a71b4-296c-4ca0-bf65-d03cdf8da0bc.PNG)
 
 1. Access to http://localhost:3000/admin/app
-2. Update Site URL settings(Database URL) to your URL to be published on the internet as follows
+2. Update Site URL settings(Database URL) to your URL that will be published on the internet as follows:
 
 ![ogp_url_setting](https://user-images.githubusercontent.com/83065937/155470209-8514ba80-4fd9-4f83-9972-dee6d6417a3d.PNG)
 
-1. Access to http://localhost:3000/admin/app
+1. Access http://localhost:3000/admin/app
 2. Update File Upload Settings 
-3. The below image shows the case MongoDB file upload system is used
+3. The below image shows the case where MongoDB file upload system is used
 
 ![file_upload_setting](https://user-images.githubusercontent.com/83065937/155473751-8e7f63d0-787a-4953-be25-789fa1ed78ff.PNG)
 
 ### Check
 
-Access to the following URL to check page OGP image directly
+Access the following URL to check page OGP image directly
 
 * http://localhost:3000/ogp/<PAGE_ID>
 
