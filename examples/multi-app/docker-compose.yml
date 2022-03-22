@@ -19,7 +19,8 @@ services:
               -wait tcp://mongo:27017
               -wait tcp://elasticsearch:9200
               -timeout 60s
-              npm run server"
+              /docker-entrypoint.sh"
+    command: ["yarn migrate && node -r dotenv-flow/config --expose_gc dist/server/app.js"]
     restart: unless-stopped
     volumes:
       - growi_data_1:/data
@@ -42,7 +43,8 @@ services:
               -wait tcp://mongo:27017
               -wait tcp://elasticsearch:9200
               -timeout 60s
-              npm run server"
+              /docker-entrypoint.sh"
+    command: ["yarn migrate && node -r dotenv-flow/config --expose_gc dist/server/app.js"]
     restart: unless-stopped
     volumes:
       - growi_data_2:/data
@@ -65,7 +67,8 @@ services:
               -wait tcp://mongo:27017
               -wait tcp://elasticsearch:9200
               -timeout 60s
-              npm run server"
+              /docker-entrypoint.sh"
+    command: ["yarn migrate && node -r dotenv-flow/config --expose_gc dist/server/app.js"]
     restart: unless-stopped
     volumes:
       - growi_data_3:/data
