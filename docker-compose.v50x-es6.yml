@@ -6,9 +6,9 @@ services:
       context: .
       dockerfile: ./Dockerfile
       args:
-        - version=4.4
+        - version=5
     ports:
-      - 127.0.0.1:3010:3000    # localhost only by default
+      - 127.0.0.1:3000:3000    # localhost only by default
     links:
       - mongo:mongo
       - elasticsearch:elasticsearch
@@ -33,7 +33,7 @@ services:
                   -wait tcp://elasticsearch:9200
                   -timeout 60s
                   /docker-entrypoint.sh"
-    command: node -r dotenv-flow/config --expose_gc dist/server/app.js
+    command: ["yarn migrate && node -r dotenv-flow/config --expose_gc dist/server/app.js"]
 
     restart: unless-stopped
     volumes:
@@ -50,9 +50,12 @@ services:
     build:
       context: ./elasticsearch
       dockerfile: ./Dockerfile
+      args:
+        - version=6.8.23
     environment:
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms256m -Xmx256m"  # increase amount if you have enough memory
+      - LOG4J_FORMAT_MSG_NO_LOOKUPS=true # CVE-2021-44228 mitigation for Elasticsearch <= 6.8.20/7.16.0
     ulimits:
       memlock:
         soft: -1

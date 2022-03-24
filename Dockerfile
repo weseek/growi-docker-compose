@@ -1,4 +1,5 @@
-FROM weseek/growi:4
+ARG version=4
+FROM weseek/growi:${version}
 LABEL maintainer Yuki Takei <yuki@weseek.co.jp>
 
 # install dockerize
