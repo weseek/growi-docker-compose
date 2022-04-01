@@ -83,7 +83,7 @@ docker-compose stop
 
 # remove current container and images
 docker-compose rm app
-docker rmi weseek/growi:4
+docker rmi weseek/growi:5
 
 # rebuild app container image
 git pull

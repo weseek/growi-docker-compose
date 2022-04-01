@@ -50,6 +50,8 @@ services:
     build:
       context: ./elasticsearch
       dockerfile: ./Dockerfile
+      args:
+        - version=6.8.23
     environment:
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms256m -Xmx256m"  # increase amount if you have enough memory

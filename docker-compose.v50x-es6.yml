@@ -5,8 +5,6 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
-      args:
-        - version=5
     ports:
       - 127.0.0.1:3000:3000    # localhost only by default
     links:

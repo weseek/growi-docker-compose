@@ -1,4 +1,4 @@
-ARG version=6.8.22
+ARG version=7.17.1
 FROM docker.elastic.co/elasticsearch/elasticsearch:${version}
 LABEL maintainer Yuki Takei <yuki@weseek.co.jp>
 
