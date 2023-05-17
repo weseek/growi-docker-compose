@@ -46,7 +46,7 @@ services:
 
   elasticsearch:
     build:
-      context: ./elasticsearch
+      context: ./elasticsearch/v8
       dockerfile: ./Dockerfile
     environment:
       - bootstrap.memory_lock=true
@@ -59,7 +59,7 @@ services:
     restart: unless-stopped
     volumes:
       - es_data:/usr/share/elasticsearch/data
-      - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./elasticsearch/v8/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
 
 volumes:
   growi_data:
