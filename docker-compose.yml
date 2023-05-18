@@ -38,7 +38,7 @@ services:
       - growi_data:/data
 
   mongo:
-    image: mongo:4.4
+    image: mongo:6.0
     restart: unless-stopped
     volumes:
       - mongo_configdb:/data/configdb
