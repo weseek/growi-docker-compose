@@ -12,5 +12,3 @@ services:
     links:
       - mongo:mongo
     restart: unless-stopped
-    volumes:
-      - ./crontab/root:/var/spool/cron/crontabs/root
