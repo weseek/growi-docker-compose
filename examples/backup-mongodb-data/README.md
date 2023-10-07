@@ -12,6 +12,7 @@ Requirements
 -----------
 
 - AWS S3 buckets and IAM account to store backup files
+- GCS buckets and GCP account to store backup files
 
 ## Quick start
 
@@ -24,27 +25,42 @@ Requirements
     ```
     cp -p examples/backup-mongodb-data/docker-compose.override.yml .
     ```
-2. Create file `.env/SOME_FILE_NAME` to set environment variables for AWS.
-    ```
-    AWS_ACCESS_KEY_ID=${Your IAM Access Key ID}
-    AWS_SECRET_ACCESS_KEY=${Your IAM Secret Access Key}
-    ```
+2. Create file `.env` to set environment variables for AWS or GCS.
+    * AWS S3 buckets
+        ```
+        AWS_ACCESS_KEY_ID=${Your IAM Access Key ID}
+        AWS_SECRET_ACCESS_KEY=${Your IAM Secret Access Key}
+        ```
+    * GCS buckets
+        ```
+        GCP_PROJECT_ID=${Your GCP Project ID}
+        GCP_SERVICE_ACCOUNT_KEY_JSON_PATH=${Path to your GCP Service Account Key}
+        ```
+        or
+        ```
+        GCP_PROJECT_ID=${Your GCP Project ID}
+        GCP_ACCESS_KEY_ID=${Your GCS HMAC Access ID}
+        GCP_SECRET_ACCESS_KEY=${Your GCS HMAC Secret}
+        ```
 3. Edit `docker-compose.override.yml`
-    - Set `CRON_EXPRESSION` to specify the timing when you execute mongodb-awesome-backup.
-    - Set `TARGET_BUCKET_URL` to valid URL of S3 bucket.
-    - Set `SOME_FILE_NAME` to valid path of environment file you create.
+    - Set `CRONMODE` to `true` and `CRON_EXPRESSION` to specify the timing when you execute mongodb-awesome-backup.
+    - Set `TARGET_BUCKET_URL` to valid URL of S3 or GCS bucket.
 4. Execute GROWI with backup
     - `docker-compose up`
 
-Then the backup container will be launched and it will backup MongoDB data to S3.
+Then the backup container will be launched and it will backup MongoDB data to S3 or GCS.
 
 
 ## Configurations
 
-You can use these environment values in `environment` section in `docker-compose.override.yml`.
+You can use these and more environment values in `environment` section in `docker-compose.override.yml`.
 
 - AWS_ACCESS_KEY_ID
 - AWS_SECRET_ACCESS_KEY
+- GCP_SERVICE_ACCOUNT_KEY_JSON_PATH
+- GCP_ACCESS_KEY_ID
+- GCP_SECRET_ACCESS_KEY
+- GCP_PROJECT_ID
 - TARGET_BUCKET_URL
 - BACKUPFILE_PREFIX
 - MONGODB_HOST
@@ -72,8 +88,6 @@ For details, see the original site [weseek/mongodb-awesome-backup](https://githu
       - AWS_SECRET_ACCESS_KEY=${Your IAM Secret Access Key}
     links:
       - mongo:mongo
-    volumes:
-      - ./crontab/root:/var/spool/cron/crontabs/root
     : <snip>
 ```
 
