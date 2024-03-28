@@ -1,3 +1,6 @@
+### DEPRECATED: GROWI v7 or above no longer needs HackMD because it has the feature to edit pages simultaneously with multiple people by the built-in editor.
+
+
 growi-docker-compose with HackMD(CodiMD) Integration Example
 =====================================================
 

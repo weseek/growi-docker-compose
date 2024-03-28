@@ -59,7 +59,7 @@ services:
     restart: unless-stopped
     volumes:
       - es_data:/usr/share/elasticsearch/data
-      - ./elasticsearch/v7/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./elasticsearch/v8/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
 
 volumes:
   growi_data:

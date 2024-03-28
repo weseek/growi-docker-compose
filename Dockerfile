@@ -1,4 +1,4 @@
-ARG version=6
+ARG version=7
 FROM weseek/growi:${version}
 LABEL maintainer Yuki Takei <yuki@weseek.co.jp>
 
