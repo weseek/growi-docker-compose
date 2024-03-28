@@ -68,9 +68,6 @@ Upgrade
 
 Please be sure to access [Admin's guide - GROWI Docs](https://docs.growi.org/en/admin-guide/)([en](https://docs.growi.org/en/admin-guide/)/[ja](https://docs.growi.org/ja/admin-guide/)) and see 'Upgrade' section before upgrading. Sometimes you may have to deal with problems that may occur by yourself.
 
-#### Upgrading to v4.2 or later
-
-To upgrade app to v4.2 or later, you have to upgrade mongoDB to v4.x. Please see [this page](https://docs.growi.org/en/admin-guide/upgrading/42x.html) for the details.
 
 ### Upgrading app container
 
@@ -83,7 +80,7 @@ docker-compose stop
 
 # remove current container and images
 docker-compose rm app
-docker rmi weseek/growi:5
+docker rmi weseek/growi:7
 
 # rebuild app container image
 git pull
