@@ -76,18 +76,18 @@ Please be sure to access [Admin's guide - GROWI Docs](https://docs.growi.org/en/
 cd growi
 
 # stop
-docker-compose stop
+docker compose stop
 
 # remove current container and images
-docker-compose rm app
+docker compose rm app
 docker rmi weseek/growi:7
 
 # rebuild app container image
 git pull
-docker-compose build
+docker compose build
 
 # start
-docker-compose up
+docker compose up
 ```
 
 Migrate from crowi-plus-docker-compose
