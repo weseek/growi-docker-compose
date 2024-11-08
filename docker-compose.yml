@@ -9,8 +9,10 @@ services:
       - mongo:mongo
       - elasticsearch:elasticsearch
     depends_on:
-      - mongo
-      - elasticsearch
+        mongo:
+          condition: service_healthy
+        elasticsearch:
+          condition: service_healthy
     environment:
       - MONGO_URI=mongodb://mongo:27017/growi
       - ELASTICSEARCH_URI=http://elasticsearch:9200/growi
