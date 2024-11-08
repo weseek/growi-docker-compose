@@ -2,17 +2,17 @@ version: '3'
 
 services:
   app:
-    build:
-      context: .
-      dockerfile: ./Dockerfile
+    image: weseek/growi:7
     ports:
       - 127.0.0.1:3000:3000    # localhost only by default
     links:
       - mongo:mongo
       - elasticsearch:elasticsearch
     depends_on:
-      - mongo
-      - elasticsearch
+        mongo:
+          condition: service_healthy
+        elasticsearch:
+          condition: service_healthy
     environment:
       - MONGO_URI=mongodb://mongo:27017/growi
       - ELASTICSEARCH_URI=http://elasticsearch:9200/growi
@@ -26,11 +26,7 @@ services:
       # - FORCE_WIKI_MODE='public'    # activate this line to force wiki public mode
       # - FORCE_WIKI_MODE='private'   # activate this line to force wiki private mode
 
-    entrypoint: "dockerize
-                  -wait tcp://mongo:27017
-                  -wait tcp://elasticsearch:9200
-                  -timeout 60s
-                  /docker-entrypoint.sh"
+    entrypoint: "/docker-entrypoint.sh"
     command: ["npm run migrate && node -r dotenv-flow/config --expose_gc dist/server/app.js"]
 
     restart: unless-stopped
@@ -43,6 +39,11 @@ services:
     volumes:
       - mongo_configdb:/data/configdb
       - mongo_db:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.runCommand('ping').ok", "--quiet"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
 
   elasticsearch:
     build:
@@ -60,6 +61,11 @@ services:
     volumes:
       - es_data:/usr/share/elasticsearch/data
       - ./elasticsearch/v8/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9200"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
 
 volumes:
   growi_data:
