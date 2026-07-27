@@ -68,6 +68,8 @@ Upgrade
 
 Please be sure to access [Admin's guide - GROWI Docs](https://docs.growi.org/en/admin-guide/)([en](https://docs.growi.org/en/admin-guide/)/[ja](https://docs.growi.org/ja/admin-guide/)) and see 'Upgrade' section before upgrading. Sometimes you may have to deal with problems that may occur by yourself.
 
+Upgrading to v8 needs an extra step: MongoDB has to run as a replica set. The `docker-compose.yml` here is already set up for it, but an existing standalone MongoDB has to be converted — see [Upgrade to v8.0.x](https://docs.growi.org/en/admin-guide/upgrading/80x.html).
+
 
 ### Upgrading app container
 
@@ -80,7 +82,7 @@ docker compose stop
 
 # remove current container and images
 docker compose rm app
-docker rmi growilabs/growi:7
+docker rmi growilabs/growi:8
 
 # rebuild app container image
 git pull
@@ -120,6 +122,7 @@ More convenient Examples
 * [Multiple sites](https://github.com/growilabs/growi-docker-compose/tree/master/examples/multi-app)
 * [HTTPS(with Let's Encrypt) proxy integration](https://github.com/growilabs/growi-docker-compose/tree/master/examples/https-portal)
 * [Backup MongoDB data](https://github.com/growilabs/growi-docker-compose/tree/master/examples/backup-mongodb-data)
+* [GROWI Vault (git clone the wiki)](https://github.com/growilabs/growi-docker-compose/tree/master/examples/growi-vault)
 
 
 Documentation

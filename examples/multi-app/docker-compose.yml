@@ -2,7 +2,7 @@ version: '3'
 
 services:
   app-1:
-    image: growilabs/growi:7
+    image: growilabs/growi:8
     ports:
       - 127.0.0.1:3001:3000
     links:
@@ -14,7 +14,7 @@ services:
         elasticsearch:
           condition: service_healthy
     environment:
-      - MONGO_URI=mongodb://mongo:27017/growi-1
+      - MONGO_URI=mongodb://mongo:27017/growi-1?replicaSet=rs0
       - ELASTICSEARCH_URI=http://elasticsearch:9200/growi-1
       - PASSWORD_SEED=changeme
     restart: unless-stopped
@@ -22,7 +22,7 @@ services:
       - growi_data_1:/data
 
   app-2:
-    image: growilabs/growi:7
+    image: growilabs/growi:8
     ports:
       - 127.0.0.1:3002:3000
     links:
@@ -34,7 +34,7 @@ services:
         elasticsearch:
           condition: service_healthy
     environment:
-      - MONGO_URI=mongodb://mongo:27017/growi-2
+      - MONGO_URI=mongodb://mongo:27017/growi-2?replicaSet=rs0
       - ELASTICSEARCH_URI=http://elasticsearch:9200/growi-2
       - PASSWORD_SEED=changeme
     restart: unless-stopped
@@ -42,7 +42,7 @@ services:
       - growi_data_2:/data
 
   app-3:
-    image: growilabs/growi:7
+    image: growilabs/growi:8
     ports:
       - 127.0.0.1:3003:3000
     links:
@@ -54,7 +54,7 @@ services:
         elasticsearch:
           condition: service_healthy
     environment:
-      - MONGO_URI=mongodb://mongo:27017/growi-3
+      - MONGO_URI=mongodb://mongo:27017/growi-3?replicaSet=rs0
       - ELASTICSEARCH_URI=http://elasticsearch:9200/growi-3
       - PASSWORD_SEED=changeme
     restart: unless-stopped
@@ -65,15 +65,26 @@ services:
     image: mongo:8.2
     # For MongoDB 6.x
     # image: mongo:6.0
+    # GROWI v8 requires a replica set because it uses MongoDB change streams,
+    # which are unavailable on a standalone server. A single-node set is enough.
+    command: ["--replSet", "rs0", "--bind_ip_all"]
     restart: unless-stopped
     volumes:
       - mongo_configdb:/data/configdb
       - mongo_db:/data/db
     healthcheck:
-      test: ["CMD", "mongosh", "--eval", "db.runCommand('ping').ok", "--quiet"]
+      # Initiates the replica set on first boot (no-op afterwards), then reports
+      # healthy only once this node has actually become PRIMARY — otherwise the
+      # apps would start against a set that cannot accept writes yet.
+      test: >
+        mongosh --quiet --eval "
+          try { rs.status() } catch (e) { rs.initiate({ _id: 'rs0', members: [{ _id: 0, host: 'mongo:27017' }] }) }
+          db.hello().isWritablePrimary || quit(1)
+        "
       interval: 10s
-      timeout: 5s
-      retries: 6
+      timeout: 10s
+      retries: 12
+      start_period: 20s
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:9.3.3

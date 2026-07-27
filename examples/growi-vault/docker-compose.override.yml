@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  app:
+    environment:
+      - VAULT_ENABLED=true
+      - VAULT_MANAGER_ENDPOINT=http://vault-manager:3001
+      # CHANGE THIS. Must be identical to the vault-manager value below.
+      - VAULT_MANAGER_INTERNAL_SECRET=changeme
+    depends_on:
+      vault-manager:
+        condition: service_started
+
+  vault-manager:
+    image: growilabs/vault-manager:0.1
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/growi?replicaSet=rs0
+      - VAULT_REPO_PATH=/data/vault-repo.git
+      # CHANGE THIS. Must be identical to the app value above.
+      - VAULT_MANAGER_INTERNAL_SECRET=changeme
+    depends_on:
+      mongo:
+        condition: service_healthy
+    restart: unless-stopped
+    volumes:
+      # Shares the same volume as app: the bare repo lives on /data and both
+      # containers run as uid/gid 1000 so the files stay readable across them.
+      - growi_data:/data
+    healthcheck:
+      # /health verifies both the MongoDB connection and the bare repo directory.
+      test: ["CMD", "node", "-e", "fetch('http://localhost:3001/health').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 20s
